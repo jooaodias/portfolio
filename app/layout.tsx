@@ -17,6 +17,38 @@ const interTight = Inter_Tight({
 export const metadata: Metadata = {
   title: "João Aleixo",
   description: "João Aleixo's personal website - Frontend Developer",
+  icons: {
+    icon: "/favicon/favicon.ico",
+    shortcut: "/favicon/favicon.ico",
+    apple: "/favicon/apple-touch-icon.png",
+    other: {
+      rel: "icon",
+      url: "/favicon/favicon.ico",
+    },
+  },
+  openGraph: {
+    title: "João Aleixo",
+    description: "João Aleixo's personal website - Frontend Developer",
+    images: [
+      {
+        url: "/images/its-me.jpeg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "João Aleixo",
+    description: "João Aleixo's personal website - Frontend Developer",
+    images: [
+      {
+        url: "/images/its-me.jpeg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  }
 };
 
 export default function RootLayout({
