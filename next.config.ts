@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images:{
-    qualities: [85, 90, 95], 
+    qualities: [90, 95, 100], 
     formats: ['image/avif', 'image/webp'],
   }
 };

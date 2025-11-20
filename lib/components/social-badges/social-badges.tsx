@@ -4,7 +4,7 @@ import { siGithub, siGmail } from "simple-icons"
 import { Badge } from "@/lib/components/badge/badge"
 import { cn } from "@/lib/utils"
 
-interface SocialBadgesProps{
+interface SocialBadgesProps {
   withoutLabel?: boolean
 }
 
@@ -18,7 +18,7 @@ interface SocialBadgeProps {
 
 function SocialIcon({ iconPath, className }: { iconPath?: string; className?: string }) {
   if (!iconPath) return null
-  
+
   return (
     <svg
       role="img"
@@ -59,7 +59,7 @@ function SocialBadge({ iconPath, href, label, className, withoutLabel = false }:
 }
 
 export function SocialBadges({ withoutLabel = false }: SocialBadgesProps) {
-  const socialLinks = [ 
+  const socialLinks = [
     {
       iconPath: siGithub.path,
       href: "https://github.com/jooaodias",

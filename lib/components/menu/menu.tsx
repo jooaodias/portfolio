@@ -7,8 +7,9 @@ import { cn } from "@/lib/utils"
 import { useI18n } from "@/lib/i18n/context"
 import BrazilFlag from "@/public/icons/BRA.svg"
 import USAFlag from "@/public/icons/USA.svg"
+import { useIsMobile } from "@/lib/hooks/useIsMobile"
 
-const SCROLL_OFFSET = 100 
+const SCROLL_OFFSET = 100
 
 export function NavigationMenu() {
   const { locale, setLocale, t } = useI18n()
@@ -16,6 +17,8 @@ export function NavigationMenu() {
   const [isScrolling, setIsScrolling] = React.useState(false)
   const [isMounted, setIsMounted] = React.useState(false)
   const [isChangingLocale, setIsChangingLocale] = React.useState(false)
+
+  const isMobile = useIsMobile()
 
   React.useEffect(() => {
     const timer = setTimeout(() => {
@@ -78,7 +81,7 @@ export function NavigationMenu() {
     e.preventDefault()
     setIsScrolling(true)
     setActiveItem(href)
-    
+
     const element = document.querySelector(href)
     if (element) {
       const elementPosition = element.getBoundingClientRect().top
@@ -97,7 +100,10 @@ export function NavigationMenu() {
 
   return (
     <div className="flex justify-center w-full py-6 px-4 fixed top-0 left-0 right-0 z-50">
-      <nav className="flex items-center gap-1.5 bg-gray-900/90 backdrop-blur-md rounded-full px-2 py-1.5 border border-gray-800/60 shadow-xl">
+      <nav className={cn(
+        "flex items-center gap-1.5 bg-gray-900/90 backdrop-blur-md rounded-full border border-gray-800/60 shadow-xl",
+        isMobile ? "px-1.5 py-1" : "px-2 py-1.5"
+      )}>
         {menuItems.map((item) => {
           const Icon = item.icon
           const isActive = activeItem === item.href
@@ -117,7 +123,7 @@ export function NavigationMenu() {
               )}
             >
               <Icon className="w-4 h-4 text-white" strokeWidth={2} />
-              {!isCircular && (
+              {!isCircular && !isMobile && (
                 <span className="text-white text-sm font-medium whitespace-nowrap">
                   {t(item.labelKey)}
                 </span>
@@ -143,20 +149,20 @@ export function NavigationMenu() {
               )}
             >
               {locale === 'pt-BR' ? (
-                <Image 
-                  src={USAFlag} 
-                  alt="USA" 
-                  width={16} 
-                  height={16} 
+                <Image
+                  src={USAFlag}
+                  alt="USA"
+                  width={16}
+                  height={16}
                   className="w-full h-full object-contain"
                   priority
                 />
               ) : (
-                <Image 
-                  src={BrazilFlag} 
-                  alt="Brasil" 
-                  width={16} 
-                  height={16} 
+                <Image
+                  src={BrazilFlag}
+                  alt="Brasil"
+                  width={16}
+                  height={16}
                   className="w-full h-full object-contain"
                   priority
                 />

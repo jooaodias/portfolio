@@ -38,7 +38,7 @@ export default function Home() {
                   }`}
                 onLoad={() => setIsImageLoaded(true)}
                 priority
-                quality={90}
+                quality={100}
               />
             </div>
           </AnimatedContent>
@@ -58,10 +58,10 @@ export default function Home() {
           pauseDuration={1500}
           showCursor={true}
           cursorCharacter="_"
-          className="text-4xl font-bold"
+          className="text-2xl md:text-4xl font-bold text-center px-4"
         />
         <SocialBadges />
-      </div>  
+      </div>
       <AboutMe />
       <Jobs />
       <Project />

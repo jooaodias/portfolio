@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
- 
+
 'use client';
 
 import { ElementType, useEffect, useRef, useState, createElement, useMemo, useCallback } from 'react';
@@ -121,7 +121,7 @@ const TextType = ({
 
           setCurrentTextIndex(prev => (prev + 1) % textArray.length);
           setCurrentCharIndex(0);
-          timeout = setTimeout(() => {}, pauseDuration);
+          timeout = setTimeout(() => { }, pauseDuration);
         } else {
           timeout = setTimeout(() => {
             setDisplayedText(prev => prev.slice(0, -1));
@@ -176,7 +176,7 @@ const TextType = ({
     Component,
     {
       ref: containerRef,
-      className: `inline-block whitespace-pre-wrap tracking-tight ${className}`,
+      className: `inline-block whitespace-pre-wrap tracking-tight break-words ${className}`,
       ...props
     },
     <span className="inline" style={{ color: getCurrentTextColor() || 'inherit' }}>
