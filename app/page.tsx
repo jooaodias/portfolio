@@ -38,6 +38,7 @@ export default function Home() {
                   }`}
                 onLoad={() => setIsImageLoaded(true)}
                 priority
+                quality={90}
               />
             </div>
           </AnimatedContent>
