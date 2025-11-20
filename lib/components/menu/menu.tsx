@@ -1,0 +1,170 @@
+"use client"
+
+import React, { useEffect } from "react"
+import { Home, FileText, FolderKanban, Briefcase, MoreHorizontal } from "lucide-react"
+import Image from "next/image"
+import { cn } from "@/lib/utils"
+import { useI18n } from "@/lib/i18n/context"
+import BrazilFlag from "@/public/icons/BRA.svg"
+import USAFlag from "@/public/icons/USA.svg"
+
+const SCROLL_OFFSET = 100 
+
+export function NavigationMenu() {
+  const { locale, setLocale, t } = useI18n()
+  const [activeItem, setActiveItem] = React.useState("#home")
+  const [isScrolling, setIsScrolling] = React.useState(false)
+  const [isMounted, setIsMounted] = React.useState(false)
+  const [isChangingLocale, setIsChangingLocale] = React.useState(false)
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsMounted(true)
+    }, 100)
+    return () => clearTimeout(timer)
+  }, [])
+
+  const menuItems = [
+    { labelKey: "menu.home", href: "#home", icon: Home, isCircular: true },
+    { labelKey: "menu.aboutMe", href: "#about-me", icon: FileText },
+    { labelKey: "menu.jobs", href: "#jobs", icon: Briefcase },
+    { labelKey: "menu.projects", href: "#projects", icon: FolderKanban },
+    { labelKey: "menu.extra", href: "#extra", icon: MoreHorizontal },
+  ]
+
+  const toggleLocale = () => {
+    setIsChangingLocale(true)
+    setTimeout(() => {
+      setLocale(locale === 'pt-BR' ? 'en-US' : 'pt-BR')
+      setTimeout(() => {
+        setIsChangingLocale(false)
+      }, 200)
+    }, 200)
+  }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (isScrolling) return
+
+      const scrollPosition = window.scrollY + SCROLL_OFFSET + 50
+
+      let currentSection = "#home"
+      const sections = ["#extra", "#projects", "#jobs", "#about-me", "#home"]
+
+      for (const section of sections) {
+        const element = document.querySelector(section)
+        if (element) {
+          const elementTop = element.getBoundingClientRect().top + window.scrollY
+          if (scrollPosition >= elementTop) {
+            currentSection = section
+            break
+          }
+        }
+      }
+
+      setActiveItem(currentSection)
+    }
+
+    handleScroll()
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [isScrolling])
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault()
+    setIsScrolling(true)
+    setActiveItem(href)
+    
+    const element = document.querySelector(href)
+    if (element) {
+      const elementPosition = element.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - SCROLL_OFFSET
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      })
+
+      setTimeout(() => {
+        setIsScrolling(false)
+      }, 1000)
+    }
+  }
+
+  return (
+    <div className="flex justify-center w-full py-6 px-4 fixed top-0 left-0 right-0 z-50">
+      <nav className="flex items-center gap-1.5 bg-gray-900/90 backdrop-blur-md rounded-full px-2 py-1.5 border border-gray-800/60 shadow-xl">
+        {menuItems.map((item) => {
+          const Icon = item.icon
+          const isActive = activeItem === item.href
+          const isCircular = item.isCircular
+
+          return (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={(e) => handleClick(e, item.href)}
+              className={cn(
+                "flex items-center gap-2 transition-all duration-200 cursor-pointer",
+                isCircular
+                  ? "rounded-full p-2.5 hover:bg-gray-800/60"
+                  : "rounded-lg px-3 py-2 hover:bg-gray-800/60",
+                isActive && !isCircular && "bg-gray-800/80"
+              )}
+            >
+              <Icon className="w-4 h-4 text-white" strokeWidth={2} />
+              {!isCircular && (
+                <span className="text-white text-sm font-medium whitespace-nowrap">
+                  {t(item.labelKey)}
+                </span>
+              )}
+            </a>
+          )
+        })}
+        <div className="w-px h-6 bg-gray-700/50 mx-1" />
+        <button
+          onClick={toggleLocale}
+          className="rounded-full p-2.5 hover:bg-gray-800/60 transition-all duration-200 cursor-pointer relative overflow-hidden"
+          aria-label={locale === 'pt-BR' ? 'Switch to English' : 'Mudar para Português'}
+          title={locale === 'pt-BR' ? 'Switch to English' : 'Mudar para Português'}
+        >
+          <div className="relative w-4 h-4 flex items-center justify-center">
+            <div
+              key={`${locale}-${isChangingLocale}`}
+              className={cn(
+                "absolute inset-0 transition-all duration-300 ease-in-out transform",
+                !isMounted && "opacity-0 scale-75",
+                isMounted && !isChangingLocale && "opacity-100 scale-100",
+                isChangingLocale && "opacity-0 scale-75"
+              )}
+            >
+              {locale === 'pt-BR' ? (
+                <Image 
+                  src={USAFlag} 
+                  alt="USA" 
+                  width={16} 
+                  height={16} 
+                  className="w-full h-full object-contain"
+                  priority
+                />
+              ) : (
+                <Image 
+                  src={BrazilFlag} 
+                  alt="Brasil" 
+                  width={16} 
+                  height={16} 
+                  className="w-full h-full object-contain"
+                  priority
+                />
+              )}
+            </div>
+          </div>
+        </button>
+      </nav>
+    </div>
+  )
+}
