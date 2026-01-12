@@ -220,7 +220,8 @@ export default function Galaxy({
     const ctn = ctnDom.current;
     const renderer = new Renderer({
       alpha: transparent,
-      premultipliedAlpha: false
+      premultipliedAlpha: false,
+      antialias: false // Disable for better performance
     });
     const gl = renderer.gl;
 
@@ -233,17 +234,21 @@ export default function Galaxy({
     }
 
     let program: Program;
+    let resizeTimeout: NodeJS.Timeout;
 
     function resize() {
-      const scale = 1;
-      renderer.setSize(ctn.offsetWidth * scale, ctn.offsetHeight * scale);
-      if (program) {
-        program.uniforms.uResolution.value = new Color(
-          gl.canvas.width,
-          gl.canvas.height,
-          gl.canvas.width / gl.canvas.height
-        );
-      }
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        const scale = 1;
+        renderer.setSize(ctn.offsetWidth * scale, ctn.offsetHeight * scale);
+        if (program) {
+          program.uniforms.uResolution.value = new Color(
+            gl.canvas.width,
+            gl.canvas.height,
+            gl.canvas.width / gl.canvas.height
+          );
+        }
+      }, 150); // Debounce resize
     }
     window.addEventListener('resize', resize, false);
     resize();
@@ -280,23 +285,48 @@ export default function Galaxy({
 
     const mesh = new Mesh(gl, { geometry, program });
     let animateId: number;
+    let isPageVisible = true;
+    let frameCount = 0;
+    const targetFPS = 30; // Reduced from 60fps to 30fps
+    const frameInterval = 1000 / targetFPS;
+    let lastFrameTime = 0;
+
+    // Handle page visibility
+    const handleVisibilityChange = () => {
+      isPageVisible = !document.hidden;
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     function update(t: number) {
       animateId = requestAnimationFrame(update);
+      
+      // Skip rendering if page is hidden
+      if (!isPageVisible) return;
+
+      // Throttle to target FPS
+      const elapsed = t - lastFrameTime;
+      if (elapsed < frameInterval) return;
+      lastFrameTime = t - (elapsed % frameInterval);
+
+      frameCount++;
+      
       if (!disableAnimation) {
         program.uniforms.uTime.value = t * 0.001;
         program.uniforms.uStarSpeed.value = (t * 0.001 * starSpeed) / 10.0;
       }
 
-      const lerpFactor = 0.05;
-      smoothMousePos.current.x += (targetMousePos.current.x - smoothMousePos.current.x) * lerpFactor;
-      smoothMousePos.current.y += (targetMousePos.current.y - smoothMousePos.current.y) * lerpFactor;
+      // Only update mouse interpolation every few frames
+      if (frameCount % 2 === 0) {
+        const lerpFactor = 0.05;
+        smoothMousePos.current.x += (targetMousePos.current.x - smoothMousePos.current.x) * lerpFactor;
+        smoothMousePos.current.y += (targetMousePos.current.y - smoothMousePos.current.y) * lerpFactor;
 
-      smoothMouseActive.current += (targetMouseActive.current - smoothMouseActive.current) * lerpFactor;
+        smoothMouseActive.current += (targetMouseActive.current - smoothMouseActive.current) * lerpFactor;
 
-      program.uniforms.uMouse.value[0] = smoothMousePos.current.x;
-      program.uniforms.uMouse.value[1] = smoothMousePos.current.y;
-      program.uniforms.uMouseActiveFactor.value = smoothMouseActive.current;
+        program.uniforms.uMouse.value[0] = smoothMousePos.current.x;
+        program.uniforms.uMouse.value[1] = smoothMousePos.current.y;
+        program.uniforms.uMouseActiveFactor.value = smoothMouseActive.current;
+      }
 
       renderer.render({ scene: mesh });
     }
@@ -332,12 +362,16 @@ export default function Galaxy({
 
     return () => {
       cancelAnimationFrame(animateId);
+      clearTimeout(resizeTimeout);
       window.removeEventListener('resize', resize);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       if (mouseInteraction) {
         ctn.removeEventListener('mousemove', handleMouseMove);
         ctn.removeEventListener('mouseleave', handleMouseLeave);
       }
-      ctn.removeChild(gl.canvas);
+      if (ctn.contains(gl.canvas)) {
+        ctn.removeChild(gl.canvas);
+      }
       gl.getExtension('WEBGL_lose_context')?.loseContext();
     };
   }, [

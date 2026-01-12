@@ -1,7 +1,7 @@
 "use client"
 
-import React, { useEffect } from "react"
-import { Home, FileText, FolderKanban, Briefcase, MoreHorizontal } from "lucide-react"
+import React, { useEffect, useCallback } from "react"
+import { Home, FileText, FolderKanban, Briefcase, Sparkles } from "lucide-react"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { useI18n } from "@/lib/i18n/context"
@@ -30,12 +30,12 @@ export function NavigationMenu() {
   const menuItems = [
     { labelKey: "menu.home", href: "#home", icon: Home, isCircular: true },
     { labelKey: "menu.aboutMe", href: "#about-me", icon: FileText },
+    { labelKey: "Skills", href: "#skills", icon: Sparkles },
     { labelKey: "menu.jobs", href: "#jobs", icon: Briefcase },
     { labelKey: "menu.projects", href: "#projects", icon: FolderKanban },
-    { labelKey: "menu.extra", href: "#extra", icon: MoreHorizontal },
   ]
 
-  const toggleLocale = () => {
+  const toggleLocale = useCallback(() => {
     setIsChangingLocale(true)
     setTimeout(() => {
       setLocale(locale === 'pt-BR' ? 'en-US' : 'pt-BR')
@@ -43,7 +43,7 @@ export function NavigationMenu() {
         setIsChangingLocale(false)
       }, 200)
     }, 200)
-  }
+  }, [locale, setLocale])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,7 +52,7 @@ export function NavigationMenu() {
       const scrollPosition = window.scrollY + SCROLL_OFFSET + 50
 
       let currentSection = "#home"
-      const sections = ["#extra", "#projects", "#jobs", "#about-me", "#home"]
+      const sections = ["#projects", "#jobs", "#skills", "#about-me", "#home"]
 
       for (const section of sections) {
         const element = document.querySelector(section)
@@ -77,7 +77,7 @@ export function NavigationMenu() {
     }
   }, [isScrolling])
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault()
     setIsScrolling(true)
     setActiveItem(href)
@@ -96,12 +96,12 @@ export function NavigationMenu() {
         setIsScrolling(false)
       }, 1000)
     }
-  }
+  }, [])
 
   return (
     <div className="flex justify-center w-full py-6 px-4 fixed top-0 left-0 right-0 z-50">
       <nav className={cn(
-        "flex items-center gap-1.5 bg-gray-900/90 backdrop-blur-md rounded-full border border-gray-800/60 shadow-xl",
+        "relative flex items-center gap-1.5 bg-gray-900/90 backdrop-blur-md rounded-full border border-gray-800/60 shadow-xl",
         isMobile ? "px-1.5 py-1" : "px-2 py-1.5"
       )}>
         {menuItems.map((item) => {
@@ -115,18 +115,30 @@ export function NavigationMenu() {
               href={item.href}
               onClick={(e) => handleClick(e, item.href)}
               className={cn(
-                "flex items-center gap-2 transition-all duration-200 cursor-pointer",
+                "relative flex items-center gap-2 transition-all duration-300 cursor-pointer z-10",
                 isCircular
                   ? "rounded-full p-2.5 hover:bg-gray-800/60"
                   : "rounded-lg px-3 py-2 hover:bg-gray-800/60",
-                isActive && !isCircular && "bg-gray-800/80"
+                isActive && !isCircular && "bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-purple-500/30"
               )}
             >
-              <Icon className="w-4 h-4 text-white" strokeWidth={2} />
+              <Icon 
+                className={cn(
+                  "w-4 h-4 transition-colors duration-300",
+                  isActive ? "text-purple-400" : "text-white"
+                )} 
+                strokeWidth={2} 
+              />
               {!isCircular && !isMobile && (
-                <span className="text-white text-sm font-medium whitespace-nowrap">
-                  {t(item.labelKey)}
+                <span className={cn(
+                  "text-sm font-medium whitespace-nowrap transition-colors duration-300",
+                  isActive ? "text-purple-300" : "text-white"
+                )}>
+                  {item.labelKey === "Skills" ? item.labelKey : t(item.labelKey)}
                 </span>
+              )}
+              {isActive && (
+                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-purple-500 rounded-full animate-pulse" />
               )}
             </a>
           )
@@ -134,7 +146,7 @@ export function NavigationMenu() {
         <div className="w-px h-6 bg-gray-700/50 mx-1" />
         <button
           onClick={toggleLocale}
-          className="rounded-full p-2.5 hover:bg-gray-800/60 transition-all duration-200 cursor-pointer relative overflow-hidden"
+          className="rounded-full p-2.5 hover:bg-gray-800/60 transition-all duration-200 cursor-pointer relative overflow-hidden hover:scale-110"
           aria-label={locale === 'pt-BR' ? 'Switch to English' : 'Mudar para Português'}
           title={locale === 'pt-BR' ? 'Switch to English' : 'Mudar para Português'}
         >

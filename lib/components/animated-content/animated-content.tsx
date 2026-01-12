@@ -1,8 +1,4 @@
-import React, { useRef, useEffect, ReactNode } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import React, { useRef, useEffect, ReactNode, useState } from 'react';
 
 interface AnimatedContentProps {
   children: ReactNode;
@@ -10,7 +6,7 @@ interface AnimatedContentProps {
   direction?: 'vertical' | 'horizontal';
   reverse?: boolean;
   duration?: number;
-  ease?: string | ((progress: number) => number);
+  ease?: string;
   initialOpacity?: number;
   animateOpacity?: boolean;
   scale?: number;
@@ -25,7 +21,7 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
   direction = 'vertical',
   reverse = false,
   duration = 0.8,
-  ease = 'power3.out',
+  ease = 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
   initialOpacity = 0,
   animateOpacity = true,
   scale = 1,
@@ -34,56 +30,65 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
   onComplete
 }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    if (!el || hasAnimated.current) return;
 
-    const axis = direction === 'horizontal' ? 'x' : 'y';
-    const offset = reverse ? -distance : distance;
-    const startPct = (1 - threshold) * 100;
-
-    gsap.set(el, {
-      [axis]: offset,
-      scale,
-      opacity: animateOpacity ? initialOpacity : 1
-    });
-
-    gsap.to(el, {
-      [axis]: 0,
-      scale: 1,
-      opacity: 1,
-      duration,
-      ease,
-      delay,
-      onComplete,
-      scrollTrigger: {
-        trigger: el,
-        start: `top ${startPct}%`,
-        toggleActions: 'play none none none',
-        once: true
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated.current) {
+            hasAnimated.current = true;
+            
+            if (delay > 0) {
+              setTimeout(() => {
+                setIsVisible(true);
+                if (onComplete) {
+                  setTimeout(onComplete, duration * 1000);
+                }
+              }, delay * 1000);
+            } else {
+              setIsVisible(true);
+              if (onComplete) {
+                setTimeout(onComplete, duration * 1000);
+              }
+            }
+          }
+        });
+      },
+      {
+        threshold: threshold,
+        rootMargin: '0px'
       }
-    });
+    );
+
+    observer.observe(el);
 
     return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
-      gsap.killTweensOf(el);
+      observer.disconnect();
     };
-  }, [
-    distance,
-    direction,
-    reverse,
-    duration,
-    ease,
-    initialOpacity,
-    animateOpacity,
-    scale,
-    threshold,
-    delay,
-    onComplete
-  ]);
+  }, [threshold, delay, duration, onComplete]);
 
-  return <div ref={ref}>{children}</div>;
+  const axis = direction === 'horizontal' ? 'X' : 'Y';
+  const offset = reverse ? -distance : distance;
+
+  const baseStyles: React.CSSProperties = {
+    transform: isVisible 
+      ? 'translate3d(0, 0, 0) scale(1)' 
+      : `translate${axis}(${offset}px) scale(${scale})`,
+    opacity: isVisible ? 1 : (animateOpacity ? initialOpacity : 1),
+    transition: `transform ${duration}s ${ease} ${delay}s, opacity ${duration}s ${ease} ${delay}s`,
+    willChange: isVisible ? 'auto' : 'transform, opacity'
+  };
+
+  return (
+    <div ref={ref} style={baseStyles}>
+      {children}
+    </div>
+  );
 };
 
 export default AnimatedContent;

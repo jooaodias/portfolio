@@ -16,16 +16,20 @@ export const translations = {
       name: 'João Vitor',
       typing: {
         text1: 'Meu nome é João Vitor',
-        text2: 'Sou desenvolvedor frontend',
-        text3: 'Aprendendo Node.js também 💻',
+        text2: 'Sou desenvolvedor Full Stack',
+        text3: 'Frontend & Backend com Node.js 💻',
         text4: 'Bem-vindo ao meu site'
       },
+      cta: {
+        viewExperiences: 'Ver Experiências',
+        contact: 'Entre em Contato'
+      }
     },
     // About me
     aboutMe: {
-      text1: 'Sou um Desenvolvedor Front-end apaixonado por criar aplicações web modernas e escaláveis. Desde 2020, tenho me dedicado a aprimorar minhas habilidades em desenvolvimento front-end, acompanhando as tecnologias mais atuais e enfrentando desafios complexos em times colaborativos.',
-      text2: 'Também estou expandindo meus conhecimentos em Node.js, buscando compreender melhor o ecossistema full stack e aprimorar minha capacidade de integração entre front-end e back-end.',
-      text3: 'Sou movido pela vontade de aprender continuamente, crescer como desenvolvedor e entregar soluções que gerem impacto real para usuários e negócios.',
+      text1: 'Sou um Desenvolvedor Full Stack com forte experiência em frontend, atuando desde 2021 na criação de aplicações web modernas e escaláveis. Trabalho com React.js, Next.js e TypeScript no frontend, e Node.js, Fastify e PostgreSQL no backend, sempre focado em arquiteturas robustas e performáticas.',
+      text2: 'Contribuo ativamente como suporte ao Chapter, participando de code reviews, ajudando na definição de padrões técnicos e atuando como Buddy no onboarding de novos desenvolvedores frontend. Acredito na importância da colaboração e compartilhamento de conhecimento em times de alta performance.',
+      text3: 'Sou movido pela vontade de aprender continuamente, crescer como desenvolvedor full stack, e entregar soluções que gerem impacto real para usuários e negócios.',
     },
     // Jobs
     jobs: {
@@ -37,13 +41,15 @@ export const translations = {
           role: 'Desenvolvedor Frontend Pleno',
           period: 'Mar 2025 - Atual',
           description: {
-            0: 'Desenvolvimento e manutenção de aplicações web de alta disponibilidade, utilizadas por mais de 4 mil usuários ativos',
-            1: 'Criação e evolução de arquiteturas front-end, aplicando padrões de projeto com foco em performance e experiência do usuário',
-            2: 'Colaboração com times multifuncionais (design, backend e produto), promovendo boas práticas e consistência entre projetos'
+            0: 'Desenvolvimento e manutenção de aplicações web full stack de alta disponibilidade, utilizadas por mais de 4 mil usuários ativos, com foco em arquitetura frontend e APIs backend em Node.js',
+            1: 'Criação de APIs RESTful com Node.js e Fastify, integração com bancos de dados PostgreSQL, e implementação de arquiteturas de microserviços',
+            2: 'Suporte ao Chapter Lead com code reviews, definição de padrões de código e boas práticas. Atuação como Buddy no onboarding de novos desenvolvedores frontend',
+            3: 'Colaboração com times multifuncionais (design, backend e produto), promovendo consistência técnica entre projetos'
           },
           achievements: {
-            0: 'Aumento de performance em aplicações críticas',
-            1: 'Padronização de código e contribuição em projetos com alto volume de usuários'
+            0: 'Implementação de APIs backend com Fastify que suportam +4mil usuários ativos com alta performance',
+            1: 'Atuação como Buddy, auxiliando no onboarding e desenvolvimento de novos membros do time frontend',
+            2: 'Padronização de arquitetura full stack e contribuição em projetos de alto impacto'
           },
         },
         venturus: {
@@ -79,16 +85,20 @@ export const translations = {
       name: 'João Vitor',
       typing: {
         text1: 'My name is João Vitor',
-        text2: "I'm frontend developer",
-        text3: 'Learning Node.js too 💻',
+        text2: "I'm a Full Stack Developer",
+        text3: 'Frontend & Backend with Node.js 💻',
         text4: 'Welcome to my website'
       },
+      cta: {
+        viewExperiences: 'View Experience',
+        contact: 'Get in Touch'
+      }
     },
     // About me
     aboutMe: {
-      text1: 'I am a Front-end Developer passionate about creating modern and scalable web applications. Since 2020, I have dedicated myself to improving my skills in front-end development, keeping up with the latest technologies and facing complex challenges in collaborative teams.',
-      text2: 'I am also expanding my knowledge in Node.js, seeking to better understand the full stack ecosystem and improve my ability to integrate between front-end and back-end.',
-      text3: 'I am driven by the desire to learn continuously, grow as a developer and deliver solutions that generate real impact for users and businesses.',
+      text1: 'I am a Full Stack Developer with strong frontend expertise, working since 2021 on creating modern and scalable web applications. I work with React.js, Next.js and TypeScript on the frontend, and Node.js, Fastify and PostgreSQL on the backend, always focused on robust and performant architectures.',
+      text2: 'I actively contribute as support to the Chapter, participating in code reviews, helping to define technical standards and acting as Buddy in onboarding new frontend developers. I believe in the importance of collaboration and knowledge sharing in high-performance teams.',
+      text3: 'I am driven by the desire to learn continuously, grow as a full stack developer, and deliver solutions that generate real impact for users and businesses.',
     },
     // Jobs
     jobs: {
@@ -100,13 +110,15 @@ export const translations = {
           role: 'Mid-level Frontend Developer',
           period: 'Mar 2025 - Current',
           description: {
-            0: 'Development and maintenance of high-availability web applications, used by more than 4,000 active users',
-            1: 'Creation and evolution of front-end architectures, applying design patterns focused on performance and user experience',
-            2: 'Collaboration with cross-functional teams (design, backend and product), promoting best practices and consistency between projects'
+            0: 'Development and maintenance of high-availability full stack web applications, used by more than 4,000 active users, focusing on frontend architecture and Node.js backend APIs',
+            1: 'Creation of RESTful APIs with Node.js and Fastify, PostgreSQL database integration, and implementation of microservices architectures',
+            2: 'Support to Chapter Lead with code reviews, code standards definition and best practices. Acting as Buddy in onboarding of new frontend developers',
+            3: 'Collaboration with cross-functional teams (design, backend and product), promoting technical consistency across projects'
           },
           achievements: {
-            0: 'Performance increase in critical applications',
-            1: 'Code standardization and contribution to projects with high user volume'
+            0: 'Implementation of backend APIs with Fastify supporting +4k active users with high performance',
+            1: 'Acting as Buddy, assisting in onboarding and development of new frontend team members',
+            2: 'Standardization of full stack architecture and contribution to high-impact projects'
           },
         },
         venturus: {
@@ -126,6 +138,13 @@ export const translations = {
       linkedin: 'LinkedIn',
       email: 'Email',
     },
+    // Stats
+    stats: {
+      yearsExperience: 'Years of Experience',
+      companies: 'Companies',
+      technologies: 'Technologies',
+      projects: 'Projects'
+    }
   },
 } as const
 

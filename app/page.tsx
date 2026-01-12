@@ -4,7 +4,8 @@ import { useState } from "react";
 import TextType from "@/lib/components/text-type/text-type";
 import Image from "next/image";
 import { SocialBadges } from "@/lib/components/social-badges/social-badges";
-import { AboutMe, Jobs, Project } from "./sections";
+import { AboutMe, Jobs, Project, Stats } from "./sections";
+import { Skills } from "./sections/skills";
 import BrazilFlag from "@/public/icons/BRA.svg";
 import { useI18n } from "@/lib/i18n/context";
 import AnimatedContent from "@/lib/components/animated-content/animated-content";
@@ -28,23 +29,32 @@ export default function Home() {
             direction="horizontal"
             reverse={true}
           >
-            <div className="rounded-full overflow-hidden w-[200px] h-[200px] border-4 border-white/20 shadow-lg">
+            <div className="rounded-full overflow-hidden w-[200px] h-[200px] border-4 border-white/20 shadow-lg relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-xl opacity-75 animate-pulse" />
               <Image
                 src="/images/its-me.jpeg"
                 alt="Profile"
                 width={200}
                 height={200}
-                className={`w-full h-full object-cover transition-opacity duration-500 ${isImageLoaded ? 'opacity-100' : 'opacity-0'
+                className={`w-full h-full object-cover transition-opacity duration-500 relative z-10 ${isImageLoaded ? 'opacity-100' : 'opacity-0'
                   }`}
                 onLoad={() => setIsImageLoaded(true)}
                 priority
-                quality={100}
+                quality={95}
+                sizes="200px"
               />
             </div>
           </AnimatedContent>
 
-          <div className="text-base font-medium italic flex gap-1">
-            {t('home.from')} <Image src={BrazilFlag} alt="Brasil" width={20} height={20} />
+          <div className="text-base font-medium italic flex gap-1 items-center">
+            {t('home.from')} 
+            <Image 
+              src={BrazilFlag} 
+              alt="Brasil" 
+              width={20} 
+              height={20}
+              style={{ width: '20px', height: 'auto' }}
+            />
           </div>
         </div>
         <TextType
@@ -58,11 +68,36 @@ export default function Home() {
           pauseDuration={1500}
           showCursor={true}
           cursorCharacter="_"
-          className="text-2xl md:text-4xl font-bold text-center px-4"
+          className="text-2xl md:text-4xl font-bold text-center px-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400"
         />
         <SocialBadges />
+        
+        {/* CTA Buttons */}
+        <AnimatedContent delay={0.5} duration={0.6}>
+          <div className="flex flex-wrap gap-3 sm:gap-4 justify-center mt-4">
+            <a
+              href="#jobs"
+              onClick={(e) => {
+                e.preventDefault();
+                document.querySelector('#jobs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
+              className="group relative px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50"
+            >
+              <span className="relative z-10">{t('home.cta.viewExperiences')}</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </a>
+            <a
+              href="mailto:joaovitordias92040@gmail.com"
+              className="group relative px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base bg-gray-800/80 border-2 border-gray-700 text-white font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:border-purple-500 hover:shadow-lg hover:shadow-purple-500/30"
+            >
+              <span className="relative z-10">{t('home.cta.contact')}</span>
+            </a>
+          </div>
+        </AnimatedContent>
       </div>
       <AboutMe />
+      <Stats />
+      <Skills />
       <Jobs />
       <Project />
 

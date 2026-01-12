@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio - João Aleixo
 
-## Getting Started
+Portfolio pessoal moderno e otimizado desenvolvido com Next.js 16, React 19 e TypeScript.
 
-First, run the development server:
+## 🚀 Tecnologias
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Framework**: Next.js 16.0.10 (App Router)
+- **UI**: React 19.2.0
+- **Estilização**: Tailwind CSS 4
+- **Animações**: IntersectionObserver API (nativo)
+- **3D/WebGL**: OGL (Galaxy Background)
+- **Ícones**: Lucide React, Simple Icons
+- **Internacionalização**: Context API customizado
+- **Analytics**: Google Analytics 4
+
+## ✨ Features
+
+### Performance
+- ⚡ Animações otimizadas com IntersectionObserver
+- 🎨 WebGL background com framerate otimizado
+- 🖼️ Lazy loading de imagens com blur placeholder
+- 📦 React.memo e useMemo para prevenir re-renders
+- 🔤 Fontes com display: swap
+- 📉 Debounced resize handlers
+
+### Visual & UX
+- 💫 Cards modernos com gradientes e glassmorphism
+- ✨ Micro-animações e efeitos hover sofisticados
+- 🎯 CTAs evidentes e intuitivos
+- 📊 Seção de Skills com indicadores visuais de proficiência
+- 📈 Footer com estatísticas profissionais
+- 🎨 Design system consistente com cores gradientes
+
+### SEO & Acessibilidade
+- 🔍 Structured Data (JSON-LD)
+- 🗺️ Sitemap.xml automático
+- 🤖 robots.txt otimizado
+- 📱 Meta tags Open Graph e Twitter Card
+- ♿ ARIA labels e navegação acessível
+
+### Internacionalização
+- 🌍 Suporte para Português (BR) e Inglês (US)
+- 🔄 Troca de idioma com animação suave
+- 💾 Persistência de preferência no localStorage
+
+## 📁 Estrutura do Projeto
+
+```
+about-me/
+├── app/
+│   ├── layout.tsx           # Layout raiz com metadata e providers
+│   ├── page.tsx             # Página principal
+│   ├── main.tsx             # Wrapper com Galaxy background
+│   ├── sitemap.ts           # Sitemap automático
+│   ├── robots.ts            # Configuração robots.txt
+│   └── sections/
+│       ├── about-me.tsx     # Seção sobre mim
+│       ├── skills.tsx       # Seção de habilidades
+│       ├── jobs.tsx         # Experiências profissionais
+│       └── project.tsx      # Projetos
+├── lib/
+│   ├── components/
+│   │   ├── animated-content/     # Animações com IntersectionObserver
+│   │   ├── background/galaxy.tsx # Background WebGL otimizado
+│   │   ├── experience-card/      # Cards de experiência modernizados
+│   │   ├── menu/                 # Navigation menu com indicador
+│   │   ├── footer/               # Footer com estatísticas
+│   │   └── structured-data/      # SEO structured data
+│   ├── i18n/                # Internacionalização
+│   ├── hooks/               # Custom hooks
+│   ├── constants/           # Dados das experiências
+│   └── types/               # TypeScript types
+└── public/
+    ├── images/              # Imagens otimizadas
+    ├── icons/               # SVG icons
+    └── favicon/             # Favicons multi-device
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📄 Licença
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+© 2025 João Vitor Aleixo. All rights reserved.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🤝 Contato
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **GitHub**: [@jooaodias](https://github.com/jooaodias)
+- **LinkedIn**: [João Aleixo](https://www.linkedin.com/in/joao-aleixo-dias/)
+- **Email**: joaovitordias92040@gmail.com

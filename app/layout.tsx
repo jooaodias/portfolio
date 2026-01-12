@@ -4,19 +4,35 @@ import "@/lib/theme/globals.css";
 import { MainContent } from "./main";
 import { I18nProvider } from "@/lib/i18n/context";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
+import StructuredData from "@/lib/components/structured-data/structured-data";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "João Aleixo",
-  description: "João Aleixo's personal website - Frontend Developer",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://joaoaleixo.dev'),
+  title: {
+    default: "João Aleixo - Frontend Developer",
+    template: "%s | João Aleixo"
+  },
+  description: "Desenvolvedor Frontend especializado em React.js e Next.js com 4+ anos de experiência. Apaixonado por criar aplicações web modernas e escaláveis.",
+  keywords: ['Frontend Developer', 'React', 'Next.js', 'TypeScript', 'JavaScript', 'Web Development', 'João Aleixo', 'Desenvolvedor Frontend'],
+  authors: [{ name: 'João Vitor Aleixo' }],
+  creator: 'João Vitor Aleixo',
+  publisher: 'João Vitor Aleixo',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   icons: {
     icon: "/favicon/favicon.ico",
     shortcut: "/favicon/favicon.ico",
@@ -27,28 +43,46 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "João Aleixo",
-    description: "João Aleixo's personal website - Frontend Developer",
+    type: 'website',
+    locale: 'pt_BR',
+    alternateLocale: 'en_US',
+    url: process.env.NEXT_PUBLIC_BASE_URL,
+    title: "João Aleixo - Frontend Developer",
+    description: "Desenvolvedor Frontend especializado em React.js e Next.js com 4+ anos de experiência.",
+    siteName: 'João Aleixo Portfolio',
     images: [
       {
         url: "/images/its-me.jpeg",
         width: 1200,
         height: 630,
+        alt: "João Aleixo - Frontend Developer"
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "João Aleixo",
-    description: "João Aleixo's personal website - Frontend Developer",
+    title: "João Aleixo - Frontend Developer",
+    description: "Desenvolvedor Frontend especializado em React.js e Next.js com 4+ anos de experiência.",
     images: [
       {
         url: "/images/its-me.jpeg",
         width: 1200,
         height: 630,
+        alt: "João Aleixo - Frontend Developer"
       },
     ],
-  }
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -58,6 +92,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <StructuredData />
+      </head>
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GA4_ANALYTICS!} />
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA4_ANALYTICS!} />
       <body
