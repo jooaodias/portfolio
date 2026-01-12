@@ -5,5 +5,5 @@ export interface JobExperience {
     description: string[];
     technologies: string[];
     achievements?: string[];
-    icon?: React.ReactNode;
+    icon?: string;
   }

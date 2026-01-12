@@ -49,7 +49,7 @@ export const translations = {
           achievements: {
             0: 'Implementação de APIs backend com Fastify que suportam +4mil usuários ativos com alta performance',
             1: 'Atuação como Buddy, auxiliando no onboarding e desenvolvimento de novos membros do time frontend',
-            2: 'Padronização de arquitetura full stack e contribuição em projetos de alto impacto'
+            2: 'Padronização de arquitetura frontend e contribuição em projetos de alto impacto'
           },
         },
         venturus: {
@@ -69,6 +69,13 @@ export const translations = {
       linkedin: 'LinkedIn',
       email: 'Email',
     },
+    // Stats
+    stats: {
+      yearsExperience: 'Anos de Experiência',
+      companies: 'Empresas',
+      technologies: 'Tecnologias',
+      projects: 'Projetos'
+    }
   },
   'en-US': {
     // Menu
@@ -118,7 +125,7 @@ export const translations = {
           achievements: {
             0: 'Implementation of backend APIs with Fastify supporting +4k active users with high performance',
             1: 'Acting as Buddy, assisting in onboarding and development of new frontend team members',
-            2: 'Standardization of full stack architecture and contribution to high-impact projects'
+            2: 'Standardization of frontend architecture and contribution to high-impact projects'
           },
         },
         venturus: {

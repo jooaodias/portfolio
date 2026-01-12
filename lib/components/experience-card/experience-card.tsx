@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 
 import React from "react";
@@ -5,6 +6,7 @@ import { Calendar, TrendingUp } from "lucide-react";
 import { Badge } from "../badge/badge";
 import { JobExperience } from "@/lib/types/jobs";
 import { useI18n } from "@/lib/i18n/context";
+import Image from "next/image";
 
 interface ExperienceCardProps {
     exp: JobExperience;
@@ -23,8 +25,8 @@ const ExperienceCardComponent = ({ exp }: ExperienceCardProps) => {
             <div className="relative z-10">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
                     <div className="flex items-start gap-4">
-                        <div className="p-3 bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-xl border border-gray-700/50 group-hover:border-purple-500/30 transition-all duration-300 group-hover:scale-110">
-                            {exp.icon}
+                        <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-xl group-hover:border-purple-500/30 transition-all duration-300 group-hover:scale-110">
+                            <img src={exp.icon} alt={exp.company} width={40} height={40} className="object-cover w-12 h-12" />
                         </div>
                         <div>
                             <h3 className="text-xl font-bold text-white mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300">{exp.role}</h3>

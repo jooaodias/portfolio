@@ -20,11 +20,11 @@ const interTight = Inter_Tight({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://joaoaleixo.dev'),
   title: {
-    default: "João Aleixo - Frontend Developer",
+    default: "João Aleixo - Full Stack Developer",
     template: "%s | João Aleixo"
   },
-  description: "Desenvolvedor Frontend especializado em React.js e Next.js com 4+ anos de experiência. Apaixonado por criar aplicações web modernas e escaláveis.",
-  keywords: ['Frontend Developer', 'React', 'Next.js', 'TypeScript', 'JavaScript', 'Web Development', 'João Aleixo', 'Desenvolvedor Frontend'],
+  description: "Desenvolvedor Full Stack especializado em React.js e Next.js com 5+ anos de experiência. Apaixonado por criar aplicações web modernas e escaláveis.",
+  keywords: ['Full Stack Developer', 'React', 'Next.js', 'TypeScript', 'JavaScript', 'Web Development', 'João Aleixo', 'Desenvolvedor Full Stack'],
   authors: [{ name: 'João Vitor Aleixo' }],
   creator: 'João Vitor Aleixo',
   publisher: 'João Vitor Aleixo',
@@ -47,28 +47,28 @@ export const metadata: Metadata = {
     locale: 'pt_BR',
     alternateLocale: 'en_US',
     url: process.env.NEXT_PUBLIC_BASE_URL,
-    title: "João Aleixo - Frontend Developer",
-    description: "Desenvolvedor Frontend especializado em React.js e Next.js com 4+ anos de experiência.",
+    title: "João Aleixo - Full Stack Developer",
+    description: "Desenvolvedor Full Stack especializado em React.js e Next.js com 5+ anos de experiência.",
     siteName: 'João Aleixo Portfolio',
     images: [
       {
         url: "/images/its-me.jpeg",
         width: 1200,
         height: 630,
-        alt: "João Aleixo - Frontend Developer"
+        alt: "João Aleixo - Full Stack Developer"
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "João Aleixo - Frontend Developer",
-    description: "Desenvolvedor Frontend especializado em React.js e Next.js com 4+ anos de experiência.",
+    title: "João Aleixo - Full Stack Developer",
+    description: "Desenvolvedor Full Stack especializado em React.js e Next.js com 5+ anos de experiência.",
     images: [
       {
         url: "/images/its-me.jpeg",
         width: 1200,
         height: 630,
-        alt: "João Aleixo - Frontend Developer"
+        alt: "João Aleixo - Full Stack Developer"
       },
     ],
   },

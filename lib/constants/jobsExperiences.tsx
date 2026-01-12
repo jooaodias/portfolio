@@ -18,7 +18,7 @@ export const getExperiences = (t: (key: string) => string): JobExperience[] => [
       t('jobs.experiences.v4.achievements.1'),
       t('jobs.experiences.v4.achievements.2'),
     ],
-    icon: <Zap className="w-5 h-5" />
+    icon: "https://i.imgur.com/pujrYSq.png"
   },
   {
     company: "Venturus",
@@ -30,6 +30,6 @@ export const getExperiences = (t: (key: string) => string): JobExperience[] => [
       t('jobs.experiences.venturus.description.2'),
     ],
     technologies: ["React.js", "Next.js", "Redux", "React Query", "TypeScript"],
-    icon: <Code className="w-5 h-5" />
+    icon: "https://media.licdn.com/dms/image/v2/D4D0BAQEIThwZwzZCEA/company-logo_200_200/B4DZaDCK6qHwAM-/0/1745955106878/venturus_logo?e=2147483647&v=beta&t=HBSf1iSh-bcIM0x42yX0auQu2Cd5b4KRJIvdvIABsKs"
   }
 ];
