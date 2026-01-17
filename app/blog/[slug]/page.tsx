@@ -253,7 +253,7 @@ function formatContent(content: string): string {
     // Lists
     .replace(/^\- (.*$)/gm, '<li>$1</li>')
     .replace(/(<li>.*<\/li>)\n(?=<li>)/g, '$1')
-    .replace(/(<li>.*<\/li>)(?!\n<li>)/gs, '<ul>$1</ul>')
+    .replace(/(<li>.*<\/li>)(?!\n<li>)/g, '<ul>$1</ul>')
     // Blockquotes
     .replace(/^> (.*$)/gm, '<blockquote>$1</blockquote>')
     // Paragraphs

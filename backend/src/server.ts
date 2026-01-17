@@ -21,14 +21,14 @@ await registerRoutes(app)
 app.setErrorHandler((error, _request, reply) => {
   app.log.error(error)
 
-  if (error.validation) {
+  if (error instanceof Error && 'validation' in error) {
     return reply.status(400).send({
       error: 'Validation Error',
-      details: error.validation,
+      details: (error as any).validation,
     })
   }
 
-  if (error.code === 'FST_ERR_NOT_FOUND') {
+  if (error instanceof Error && 'code' in error && error.code === 'FST_ERR_NOT_FOUND') {
     return reply.status(404).send({ error: 'Route not found' })
   }
 
