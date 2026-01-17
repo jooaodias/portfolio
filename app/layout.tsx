@@ -5,6 +5,7 @@ import { MainContent } from "./main";
 import { I18nProvider } from "@/lib/i18n/context";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import StructuredData from "@/lib/components/structured-data/structured-data";
+import { ToastProvider } from "@/lib/components/toast-provider/toast-provider";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -104,6 +105,7 @@ export default function RootLayout({
           <MainContent>
             {children}
           </MainContent>
+          <ToastProvider />
         </I18nProvider>
       </body>
     </html>

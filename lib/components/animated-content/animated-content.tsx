@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useRef, useEffect, ReactNode, useState } from 'react';
 
 interface AnimatedContentProps {
