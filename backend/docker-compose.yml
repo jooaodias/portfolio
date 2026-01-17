@@ -1,0 +1,59 @@
+# Docker Compose para o ambiente de desenvolvimento do Blog API
+# 
+# Este arquivo configura:
+# - PostgreSQL: Banco de dados principal
+# - pgAdmin (opcional): Interface gráfica para gerenciar o banco
+#
+# Como usar:
+# 1. Iniciar os containers: docker-compose up -d
+# 2. Parar os containers: docker-compose down
+# 3. Ver logs: docker-compose logs -f
+# 4. Remover tudo (incluindo dados): docker-compose down -v
+
+version: '3.8'
+
+services:
+  # Banco de dados PostgreSQL
+  postgres:
+    image: postgres:16-alpine
+    container_name: portfolio-blog-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: blog_user
+      POSTGRES_PASSWORD: blog_password_123
+      POSTGRES_DB: portfolio_blog
+    ports:
+      - "5432:5432"
+    volumes:
+      # Persiste os dados mesmo após reiniciar o container
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U blog_user -d portfolio_blog"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Interface gráfica para gerenciar o PostgreSQL (opcional)
+  # Acesse em: http://localhost:5050
+  # Email: admin@admin.com | Senha: admin
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: portfolio-blog-pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
+    name: portfolio-blog-postgres-data
+  pgadmin_data:
+    name: portfolio-blog-pgadmin-data
