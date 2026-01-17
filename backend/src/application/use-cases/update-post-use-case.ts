@@ -1,6 +1,8 @@
 import { Post } from '../../domain/entities/post.entity'
 import { PostRepository } from '../../domain/repositories/post-repository'
 import { UpdatePostDTO } from '../dtos'
+import { PostAlreadyExistsError } from '../exceptions/post-already-exists'
+import { PostNotFoundError } from '../exceptions/post-not-found'
 
 export class UpdatePostUseCase {
   constructor(private readonly postRepository: PostRepository) {}
@@ -9,10 +11,9 @@ export class UpdatePostUseCase {
     const post = await this.postRepository.findById(id)
 
     if (!post) {
-      throw new Error('Post não encontrado')
+      throw new PostNotFoundError('Post not found with id: ' + id)
     }
 
-    // Se está atualizando o título, verificar se o novo slug já existe
     if (dto.title && dto.title !== post.title) {
       const newSlug = dto.title
         .toLowerCase()
@@ -25,7 +26,7 @@ export class UpdatePostUseCase {
 
       const slugExists = await this.postRepository.existsBySlug(newSlug, id)
       if (slugExists) {
-        throw new Error('Já existe um post com este título')
+        throw new PostAlreadyExistsError('This slug already exists')
       }
     }
 

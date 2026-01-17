@@ -40,7 +40,7 @@ export class PostController {
     const post = await this.deps.getPostByIdUseCase.execute(id)
 
     if (!post) {
-      return reply.status(404).send({ error: 'Post não encontrado' })
+      return reply.status(404).send({ error: 'Post not found with id: ' + id })
     }
 
     return reply.send(post.toJSON())
@@ -51,7 +51,7 @@ export class PostController {
     const post = await this.deps.getPostBySlugUseCase.execute(slug)
 
     if (!post) {
-      return reply.status(404).send({ error: 'Post não encontrado' })
+      return reply.status(404).send({ error: 'Post not found with slug: ' + slug })
     }
 
     return reply.send(post.toJSON())

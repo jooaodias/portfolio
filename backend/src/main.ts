@@ -19,9 +19,10 @@ import {
 // Controller
 import { PostController } from './infra/controller/post-controller'
 
-// Routes & Middlewares
+// Routes, Middlewares & Swagger
 import { registerPostRoutes } from './infra/http/routes'
 import { registerErrorHandler } from './infra/http/middlewares'
+import { registerSwagger } from './infra/http/swagger'
 
 // =============================================================================
 // Dependency Injection Container
@@ -59,6 +60,9 @@ await app.register(cors, {
   credentials: true,
 })
 
+// Register Swagger
+await registerSwagger(app)
+
 // Register error handler
 registerErrorHandler(app)
 
@@ -66,8 +70,22 @@ registerErrorHandler(app)
 registerPostRoutes(app, postController)
 
 // Health check
-app.get('/health', async () => {
-  return { status: 'ok', timestamp: new Date().toISOString() }
+app.get('/health', {
+  schema: {
+    tags: ['Health'],
+    response: {
+      200: {
+        type: 'object',
+        properties: {
+          status: { type: 'string' },
+          timestamp: { type: 'string', format: 'date-time' },
+        },
+      },
+    },
+  },
+  handler: async () => {
+    return { status: 'ok', timestamp: new Date().toISOString() }
+  },
 })
 
 // Start server

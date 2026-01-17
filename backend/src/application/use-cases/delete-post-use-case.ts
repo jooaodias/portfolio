@@ -1,4 +1,5 @@
 import { PostRepository } from '../../domain/repositories/post-repository'
+import { PostNotFoundError } from '../exceptions/post-not-found'
 
 export class DeletePostUseCase {
   constructor(private readonly postRepository: PostRepository) {}
@@ -7,7 +8,7 @@ export class DeletePostUseCase {
     const post = await this.postRepository.findById(id)
 
     if (!post) {
-      throw new Error('Post não encontrado')
+      throw new PostNotFoundError('Post not found with id: ' + id)
     }
 
     await this.postRepository.delete(id)

@@ -1,5 +1,25 @@
 import { z } from 'zod'
 
+// Response schema (para documentação)
+export const postResponseSchema = z.object({
+  id: z.string().uuid(),
+  slug: z.string(),
+  title: z.string(),
+  titleEn: z.string().nullish(),
+  excerpt: z.string(),
+  excerptEn: z.string().nullish(),
+  content: z.string(),
+  contentEn: z.string().nullish(),
+  coverImage: z.string().nullish(),
+  tags: z.array(z.string()),
+  published: z.boolean(),
+  featured: z.boolean(),
+  authorName: z.string(),
+  readingTime: z.number().nullish(),
+  createdAt: z.coerce.date(),
+  updatedAt: z.coerce.date(),
+})
+
 export const createPostValidator = z.object({
   title: z.string().min(3, 'Título deve ter no mínimo 3 caracteres'),
   titleEn: z.string().optional(),
