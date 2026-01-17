@@ -2,7 +2,7 @@ import { FastifyInstance, FastifyError, FastifyRequest, FastifyReply } from 'fas
 import { ZodError } from 'zod'
 
 export function registerErrorHandler(app: FastifyInstance) {
-  app.setErrorHandler((error: FastifyError, request: FastifyRequest, reply: FastifyReply) => {
+  app.setErrorHandler((error: FastifyError, _: FastifyRequest, reply: FastifyReply) => {
     app.log.error(error)
 
     // Zod validation errors
