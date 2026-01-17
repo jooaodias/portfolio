@@ -9,6 +9,7 @@ export const translations = {
       jobs: 'Trabalhos',
       projects: 'Projetos',
       extra: 'Extra',
+      blog: 'Blog',
     },
     // Home page
     home: {
@@ -75,6 +76,19 @@ export const translations = {
       companies: 'Empresas',
       technologies: 'Tecnologias',
       projects: 'Projetos'
+    },
+    // Blog
+    blog: {
+      title: 'Blog',
+      description: 'Artigos sobre desenvolvimento, projetos e minha jornada como desenvolvedor',
+      noPosts: 'Nenhum post encontrado',
+      noPostsDescription: 'Volte em breve para novos artigos!',
+      readMore: 'Leia mais',
+      backToBlog: 'Voltar ao Blog',
+      share: 'Compartilhar',
+      minRead: 'min de leitura',
+      searchPlaceholder: 'Buscar posts...',
+      allTags: 'Todos',
     }
   },
   'en-US': {
@@ -85,6 +99,7 @@ export const translations = {
       jobs: 'Jobs',
       projects: 'Projects',
       extra: 'Extra',
+      blog: 'Blog',
     },
     // Home page
     home: {
@@ -151,6 +166,19 @@ export const translations = {
       companies: 'Companies',
       technologies: 'Technologies',
       projects: 'Projects'
+    },
+    // Blog
+    blog: {
+      title: 'Blog',
+      description: 'Articles about development, projects, and my journey as a developer',
+      noPosts: 'No posts found',
+      noPostsDescription: 'Check back soon for new articles!',
+      readMore: 'Read more',
+      backToBlog: 'Back to Blog',
+      share: 'Share',
+      minRead: 'min read',
+      searchPlaceholder: 'Search posts...',
+      allTags: 'All',
     }
   },
 } as const

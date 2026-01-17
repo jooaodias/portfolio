@@ -1,8 +1,10 @@
 "use client"
 
 import React, { useEffect, useCallback } from "react"
-import { Home, FileText, FolderKanban, Briefcase, Sparkles } from "lucide-react"
+import { Home, FileText, FolderKanban, Briefcase, Sparkles, BookOpen } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { useI18n } from "@/lib/i18n/context"
 import BrazilFlag from "@/public/icons/BRA.svg"
@@ -19,6 +21,8 @@ export function NavigationMenu() {
   const [isChangingLocale, setIsChangingLocale] = React.useState(false)
 
   const isMobile = useIsMobile()
+  const pathname = usePathname()
+  const isOnBlogPage = pathname?.startsWith('/blog')
 
   React.useEffect(() => {
     const timer = setTimeout(() => {
@@ -28,11 +32,12 @@ export function NavigationMenu() {
   }, [])
 
   const menuItems = [
-    { labelKey: "menu.home", href: "#home", icon: Home, isCircular: true },
-    { labelKey: "menu.aboutMe", href: "#about-me", icon: FileText },
-    { labelKey: "Skills", href: "#skills", icon: Sparkles },
-    { labelKey: "menu.jobs", href: "#jobs", icon: Briefcase },
-    { labelKey: "menu.projects", href: "#projects", icon: FolderKanban },
+    { labelKey: "menu.home", href: "#home", icon: Home, isCircular: true, isRoute: false },
+    { labelKey: "menu.aboutMe", href: "#about-me", icon: FileText, isRoute: false },
+    { labelKey: "Skills", href: "#skills", icon: Sparkles, isRoute: false },
+    { labelKey: "menu.jobs", href: "#jobs", icon: Briefcase, isRoute: false },
+    { labelKey: "menu.projects", href: "#projects", icon: FolderKanban, isRoute: false },
+    { labelKey: "menu.blog", href: "/blog", icon: BookOpen, isRoute: true },
   ]
 
   const toggleLocale = useCallback(() => {
@@ -106,14 +111,55 @@ export function NavigationMenu() {
       )}>
         {menuItems.map((item) => {
           const Icon = item.icon
-          const isActive = activeItem === item.href
+          const isRoute = item.isRoute
           const isCircular = item.isCircular
+          const isActive = isRoute 
+            ? pathname?.startsWith(item.href)
+            : !isOnBlogPage && activeItem === item.href
+
+          // For route items, use Link
+          if (isRoute) {
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "relative flex items-center gap-2 transition-all duration-300 cursor-pointer z-10",
+                  "rounded-lg px-3 py-2 hover:bg-gray-800/60",
+                  isActive && "bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-purple-500/30"
+                )}
+              >
+                <Icon 
+                  className={cn(
+                    "w-4 h-4 transition-colors duration-300",
+                    isActive ? "text-purple-400" : "text-white"
+                  )} 
+                  strokeWidth={2} 
+                />
+                {!isMobile && (
+                  <span className={cn(
+                    "text-sm font-medium whitespace-nowrap transition-colors duration-300",
+                    isActive ? "text-purple-300" : "text-white"
+                  )}>
+                    {t(item.labelKey)}
+                  </span>
+                )}
+                {isActive && (
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-purple-500 rounded-full animate-pulse" />
+                )}
+              </Link>
+            )
+          }
+
+          // For section items (anchor links)
+          // If on blog page, redirect to home with hash
+          const href = isOnBlogPage ? `/${item.href}` : item.href
 
           return (
             <a
               key={item.href}
-              href={item.href}
-              onClick={(e) => handleClick(e, item.href)}
+              href={href}
+              onClick={(e) => !isOnBlogPage && handleClick(e, item.href)}
               className={cn(
                 "relative flex items-center gap-2 transition-all duration-300 cursor-pointer z-10",
                 isCircular

@@ -1,0 +1,42 @@
+// This is your Prisma schema file
+// Learn more: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Post {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  title       String
+  titleEn     String?  @map("title_en")
+  excerpt     String
+  excerptEn   String?  @map("excerpt_en")
+  content     String
+  contentEn   String?  @map("content_en")
+  coverImage  String?  @map("cover_image")
+  tags        String   // JSON array stored as string
+  published   Boolean  @default(false)
+  featured    Boolean  @default(false)
+  authorName  String   @default("João Aleixo") @map("author_name")
+  readingTime Int?     @map("reading_time") // in minutes
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("posts")
+}
+
+model Category {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  nameEn    String?  @map("name_en")
+  slug      String   @unique
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("categories")
+}
