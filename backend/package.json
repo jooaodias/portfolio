@@ -8,6 +8,7 @@
     "dev": "tsx watch --env-file=.env src/main.ts",
     "build": "tsc",
     "start": "node dist/main.js",
+    "deploy": "npm run build && npm run db:migrate:deploy",
     "db:migrate": "prisma migrate dev --schema=src/infra/database/prisma/schema.prisma",
     "db:migrate:deploy": "prisma migrate deploy --schema=src/infra/database/prisma/schema.prisma",
     "db:studio": "prisma studio --schema=src/infra/database/prisma/schema.prisma",
