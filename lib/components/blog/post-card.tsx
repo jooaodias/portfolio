@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowRight } from 'lucide-react'
 import { PostListItem } from '@/lib/types/blog'
@@ -33,12 +33,10 @@ export function PostCard({ post, index = 0 }: PostCardProps) {
           {/* Cover Image */}
           {post.coverImage ? (
             <div className="relative h-48 overflow-hidden">
-              <Image
+              <img
                 src={post.coverImage}
                 alt={title}
-                fill
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent" />
             </div>

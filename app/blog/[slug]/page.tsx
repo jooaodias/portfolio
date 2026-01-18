@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { getPostBySlug } from '@/lib/services/blog'
@@ -63,12 +64,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {post.coverImage && (
           <AnimatedContent delay={0.2} duration={0.5}>
             <div className="relative w-full h-64 md:h-96 rounded-xl overflow-hidden mb-10">
-              <Image
+              <img
                 src={post.coverImage}
                 alt={post.title}
-                fill
                 className="object-cover"
-                priority
               />
             </div>
           </AnimatedContent>
