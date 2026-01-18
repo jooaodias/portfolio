@@ -1,86 +1,95 @@
 # Portfolio - João Aleixo
 
-Portfolio pessoal moderno e otimizado desenvolvido com Next.js 16, React 19 e TypeScript.
+Portfolio pessoal full stack com blog integrado, desenvolvido com Next.js 16, Fastify e PostgreSQL.
 
-## 🚀 Tecnologias
+## Tech Stack
 
-- **Framework**: Next.js 16.0.10 (App Router)
-- **UI**: React 19.2.0
-- **Estilização**: Tailwind CSS 4
-- **Animações**: IntersectionObserver API (nativo)
-- **3D/WebGL**: OGL (Galaxy Background)
-- **Ícones**: Lucide React, Simple Icons
-- **Internacionalização**: Context API customizado
-- **Analytics**: Google Analytics 4
+### Frontend
+| Tecnologia | Versão | Descrição |
+|------------|--------|-----------|
+| Next.js | 16.0.10 | Framework React com App Router |
+| React | 19.2.0 | Biblioteca UI |
+| TypeScript | 5.7 | Tipagem estática |
+| Tailwind CSS | 4 | Estilização utility-first |
+| OGL | - | WebGL para background animado |
+| Lucide React | - | Ícones |
 
-## ✨ Features
+### Backend
+| Tecnologia | Versão | Descrição |
+|------------|--------|-----------|
+| Fastify | 5.2 | Framework web performático |
+| Prisma | 6.4 | ORM para PostgreSQL |
+| PostgreSQL | 16 | Banco de dados relacional |
+| Redis | 7 | Cache (ioredis) |
+| Zod | 3.24 | Validação de schemas |
+| Swagger | - | Documentação da API |
 
-### Performance
-- ⚡ Animações otimizadas com IntersectionObserver
-- 🎨 WebGL background com framerate otimizado
-- 🖼️ Lazy loading de imagens com blur placeholder
-- 📦 React.memo e useMemo para prevenir re-renders
-- 🔤 Fontes com display: swap
-- 📉 Debounced resize handlers
+### Arquitetura Backend
+- **Clean Architecture** com separação de camadas
+- **DDD** (Domain-Driven Design) com Value Objects
+- **Repository Pattern** com Prisma
+- **Use Cases** para regras de negócio
 
-### Visual & UX
-- 💫 Cards modernos com gradientes e glassmorphism
-- ✨ Micro-animações e efeitos hover sofisticados
-- 🎯 CTAs evidentes e intuitivos
-- 📊 Seção de Skills com indicadores visuais de proficiência
-- 📈 Footer com estatísticas profissionais
-- 🎨 Design system consistente com cores gradientes
+### Hospedagem
+| Serviço | Uso |
+|---------|-----|
+| Vercel | Frontend (Next.js) |
+| Render | Backend (Fastify) |
+| Neon | PostgreSQL (serverless) |
+| Upstash | Redis (serverless) |
 
-### SEO & Acessibilidade
-- 🔍 Structured Data (JSON-LD)
-- 🗺️ Sitemap.xml automático
-- 🤖 robots.txt otimizado
-- 📱 Meta tags Open Graph e Twitter Card
-- ♿ ARIA labels e navegação acessível
+## Features
 
-### Internacionalização
-- 🌍 Suporte para Português (BR) e Inglês (US)
-- 🔄 Troca de idioma com animação suave
-- 💾 Persistência de preferência no localStorage
+### Portfolio
+- Design moderno com glassmorphism e gradientes
+- Background WebGL animado (galaxy)
+- Internacionalização (PT-BR / EN-US)
+- SEO otimizado (Structured Data, Sitemap, Open Graph)
+- Animações com IntersectionObserver
 
-## 📁 Estrutura do Projeto
+### Blog
+- Posts com Markdown
+- Suporte bilíngue (PT/EN)
+- Cache Redis para performance
+- Painel admin para gerenciamento
+
+### Admin Panel (`/blog/admin`)
+- Criar/Editar posts com editor Markdown
+- Publicar/Despublicar posts
+- Deletar posts com confirmação
+- Preview em tempo real
+
+## Estrutura do Projeto
 
 ```
 about-me/
-├── app/
-│   ├── layout.tsx           # Layout raiz com metadata e providers
-│   ├── page.tsx             # Página principal
-│   ├── main.tsx             # Wrapper com Galaxy background
-│   ├── sitemap.ts           # Sitemap automático
-│   ├── robots.ts            # Configuração robots.txt
-│   └── sections/
-│       ├── about-me.tsx     # Seção sobre mim
-│       ├── skills.tsx       # Seção de habilidades
-│       ├── jobs.tsx         # Experiências profissionais
-│       └── project.tsx      # Projetos
+├── app/                      # Next.js App Router
+│   ├── page.tsx              # Home (portfolio)
+│   ├── blog/
+│   │   ├── page.tsx          # Lista de posts
+│   │   ├── [slug]/page.tsx   # Post individual
+│   │   └── admin/            # Painel administrativo
+│   └── sections/             # Seções do portfolio
 ├── lib/
-│   ├── components/
-│   │   ├── animated-content/     # Animações com IntersectionObserver
-│   │   ├── background/galaxy.tsx # Background WebGL otimizado
-│   │   ├── experience-card/      # Cards de experiência modernizados
-│   │   ├── menu/                 # Navigation menu com indicador
-│   │   ├── footer/               # Footer com estatísticas
-│   │   └── structured-data/      # SEO structured data
-│   ├── i18n/                # Internacionalização
-│   ├── hooks/               # Custom hooks
-│   ├── constants/           # Dados das experiências
-│   └── types/               # TypeScript types
-└── public/
-    ├── images/              # Imagens otimizadas
-    ├── icons/               # SVG icons
-    └── favicon/             # Favicons multi-device
+│   ├── components/           # Componentes reutilizáveis
+│   ├── services/             # API clients
+│   ├── i18n/                 # Internacionalização
+│   └── types/                # TypeScript types
+├── backend/
+│   ├── src/
+│   │   ├── domain/           # Entidades e Value Objects
+│   │   ├── application/      # Use Cases e Validators
+│   │   └── infra/            # Controllers, DB, Cache
+│   ├── prisma/               # Schema e migrations
+│   └── docker-compose.yml    # PostgreSQL + Redis local
+└── public/                   # Assets estáticos
 ```
 
-## 📄 Licença
+## Licença
 
 © 2025 João Vitor Aleixo. All rights reserved.
 
-## 🤝 Contato
+## Contato
 
 - **GitHub**: [@jooaodias](https://github.com/jooaodias)
 - **LinkedIn**: [João Aleixo](https://www.linkedin.com/in/joao-aleixo-dias/)
