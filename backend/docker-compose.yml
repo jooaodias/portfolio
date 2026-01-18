@@ -22,6 +22,23 @@ services:
       timeout: 5s
       retries: 5
 
+  # Redis para cache
+  # Conexão: redis://localhost:6379
+  redis:
+    image: redis:7-alpine
+    container_name: portfolio-blog-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   # Interface gráfica para gerenciar o PostgreSQL (opcional)
   # Acesse em: http://localhost:5050
   # Email: admin@admin.com | Senha: admin
@@ -46,3 +63,5 @@ volumes:
     name: portfolio-blog-postgres-data
   pgadmin_data:
     name: portfolio-blog-pgadmin-data
+  redis_data:
+    name: portfolio-blog-redis-data
