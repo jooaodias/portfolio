@@ -17,6 +17,9 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.2.4
         version: 1.2.4(@types/react@19.2.6)(react@19.2.0)
+      '@statsig/react-bindings':
+        specifier: ^3.31.2
+        version: 3.31.2(react@19.2.0)
       '@tailwindcss/typography':
         specifier: ^0.5.19
         version: 0.5.19(tailwindcss@4.1.17)
@@ -657,6 +660,17 @@ packages:
 
   '@rtsao/scc@1.1.0':
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
+
+  '@statsig/client-core@3.31.2':
+    resolution: {integrity: sha512-Tfa3JC0fJJL0Pd13Le9ZxqZp1QD8XKQ9pyPaBeyhpB6QWzr6qqGusGFaSmmCJXu9ViN672Lgg87/43mANg2LBw==}
+
+  '@statsig/js-client@3.31.2':
+    resolution: {integrity: sha512-uEIt2Zg0NTgIhg4jaMQYtdttrTDgQRtlk4E8N6cNBcq2i/Igea1DzVYD7RyEV9oiq3InHDOfuuP+p+w5oO+qeA==}
+
+  '@statsig/react-bindings@3.31.2':
+    resolution: {integrity: sha512-27QFh5CBr/1keZSI7e7fYkaTESrbrM80wgOoLKeZSZ+xUBvP5kC1+UUzX+exIW62svWSf3lnWta2L1LzOapiXQ==}
+    peerDependencies:
+      react: ^16.6.3 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
@@ -3183,6 +3197,18 @@ snapshots:
       '@types/react-dom': 19.2.3(@types/react@19.2.6)
 
   '@rtsao/scc@1.1.0': {}
+
+  '@statsig/client-core@3.31.2': {}
+
+  '@statsig/js-client@3.31.2':
+    dependencies:
+      '@statsig/client-core': 3.31.2
+
+  '@statsig/react-bindings@3.31.2(react@19.2.0)':
+    dependencies:
+      '@statsig/client-core': 3.31.2
+      '@statsig/js-client': 3.31.2
+      react: 19.2.0
 
   '@swc/helpers@0.5.15':
     dependencies:

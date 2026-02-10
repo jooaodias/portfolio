@@ -1,6 +1,6 @@
 # Portfolio Blog API
 
-API REST para o blog do portfólio, construída com **Clean Architecture**, **DDD**, **Fastify**, **Prisma** e **Redis**.
+API REST para o blog do portfólio, construída com **Clean Architecture**, **DDD**, **Fastify** e **Prisma**.
 
 ## Tech Stack
 
@@ -9,7 +9,6 @@ API REST para o blog do portfólio, construída com **Clean Architecture**, **DD
 | Fastify | Framework web performático |
 | Prisma | ORM para PostgreSQL |
 | PostgreSQL | Banco de dados relacional |
-| Redis | Cache (ioredis) |
 | TypeScript | Tipagem estática |
 | Zod | Validação de schemas |
 | Swagger | Documentação OpenAPI |
@@ -43,10 +42,6 @@ src/
 ├── infra/                     # Camada de Infraestrutura
 │   ├── config/
 │   │   └── env.ts             # Variáveis de ambiente
-│   ├── cache/                 # Redis
-│   │   ├── redis-client.ts
-│   │   ├── cache-service.ts
-│   │   └── cache-keys.ts
 │   ├── database/prisma/
 │   │   ├── prisma-config.ts
 │   │   ├── prisma-post-repository.ts
@@ -76,7 +71,6 @@ docker-compose up -d
 
 Isso inicia:
 - **PostgreSQL** na porta `5432`
-- **Redis** na porta `6379`
 - **pgAdmin** na porta `5050`
 
 ### 2. Instalar e configurar
@@ -117,7 +111,6 @@ DATABASE_URL="postgresql://user:pass@localhost:5432/blog"
 PORT=3001
 HOST="0.0.0.0"
 CORS_ORIGIN="http://localhost:3000"
-REDIS_URL="redis://localhost:6379"  # opcional
 ```
 
 ## API Endpoints
@@ -142,19 +135,3 @@ REDIS_URL="redis://localhost:6379"  # opcional
 | published | boolean | Filtrar publicados |
 | featured | boolean | Filtrar destaques |
 | tag | string | Filtrar por tag |
-
-## Cache Redis
-
-O cache é opcional. Se `REDIS_URL` não estiver configurada, a API funciona normalmente sem cache.
-
-### Estratégia
-- **Leitura**: Cache-aside (verifica cache → banco → salva cache)
-- **Escrita**: Invalida cache após create/update/delete
-- **TTL**: 5 minutos
-
-### Chaves
-```
-posts:list:page=1:limit=10:published=true
-posts:id:uuid-123
-posts:slug:meu-post
-```

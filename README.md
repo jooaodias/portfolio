@@ -20,9 +20,14 @@ Portfolio pessoal full stack com blog integrado, desenvolvido com Next.js 16, Fa
 | Fastify | 5.2 | Framework web performático |
 | Prisma | 6.4 | ORM para PostgreSQL |
 | PostgreSQL | 16 | Banco de dados relacional |
-| Redis | 7 | Cache (ioredis) |
 | Zod | 3.24 | Validação de schemas |
 | Swagger | - | Documentação da API |
+
+### Feature Flags
+| Tecnologia | Versão | Descrição |
+|------------|--------|-----------|
+| Statsig | 3.31 | Feature flags e A/B testing |
+| @statsig/react-bindings | 3.31 | Integração React para Statsig |
 
 ### Arquitetura Backend
 - **Clean Architecture** com separação de camadas
@@ -36,7 +41,7 @@ Portfolio pessoal full stack com blog integrado, desenvolvido com Next.js 16, Fa
 | Vercel | Frontend (Next.js) |
 | Render | Backend (Fastify) |
 | Neon | PostgreSQL (serverless) |
-| Upstash | Redis (serverless) |
+| Statsig | Feature flags (SaaS) |
 
 ## Features
 
@@ -50,7 +55,7 @@ Portfolio pessoal full stack com blog integrado, desenvolvido com Next.js 16, Fa
 ### Blog
 - Posts com Markdown
 - Suporte bilíngue (PT/EN)
-- Cache Redis para performance
+- Feature flags para controle de funcionalidades
 - Painel admin para gerenciamento
 
 ### Admin Panel (`/blog/admin`)
@@ -58,6 +63,17 @@ Portfolio pessoal full stack com blog integrado, desenvolvido com Next.js 16, Fa
 - Publicar/Despublicar posts
 - Deletar posts com confirmação
 - Preview em tempo real
+
+### Feature Flags (Statsig)
+- Controle de funcionalidades em tempo real
+- Custom hook `useFeatureFlag` para fácil integração
+- Suporte para rollouts graduais e A/B testing
+- Configuração sem necessidade de deploy
+
+**Feature Flag: Blog (`blog_feature`)**
+- Controla visibilidade do blog no menu
+- Protege rotas `/blog`, `/blog/[slug]` e `/blog/admin`
+- Redireciona para home quando desabilitado
 
 ## Estrutura do Projeto
 
@@ -72,6 +88,7 @@ about-me/
 │   └── sections/             # Seções do portfolio
 ├── lib/
 │   ├── components/           # Componentes reutilizáveis
+│   ├── hooks/                # Custom React hooks (useFeatureFlag)
 │   ├── services/             # API clients
 │   ├── i18n/                 # Internacionalização
 │   └── types/                # TypeScript types
@@ -79,9 +96,9 @@ about-me/
 │   ├── src/
 │   │   ├── domain/           # Entidades e Value Objects
 │   │   ├── application/      # Use Cases e Validators
-│   │   └── infra/            # Controllers, DB, Cache
+│   │   └── infra/            # Controllers, DB, HTTP
 │   ├── prisma/               # Schema e migrations
-│   └── docker-compose.yml    # PostgreSQL + Redis local
+│   └── docker-compose.yml    # PostgreSQL local
 └── public/                   # Assets estáticos
 ```
 

@@ -6,6 +6,8 @@ import { I18nProvider } from "@/lib/i18n/context";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import StructuredData from "@/lib/components/structured-data/structured-data";
 import { ToastProvider } from "@/lib/components/toast-provider/toast-provider";
+import { StatsigProvider } from '@statsig/react-bindings';
+import { Providers } from "./providers/providers";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -101,12 +103,12 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${interTight.variable} antialiased`}
       >
-        <I18nProvider>
+        <Providers>
           <MainContent>
             {children}
           </MainContent>
           <ToastProvider />
-        </I18nProvider>
+        </Providers>
       </body>
     </html>
   );

@@ -31,7 +31,6 @@ export default function AdminClient() {
     try {
       setLoading(true)
       const response = await getAllPosts({ page: 1, limit: 50 })
-      console.log(response)
       setPosts(response.data)
     } catch (error) {
       toast.error('Erro ao carregar posts')

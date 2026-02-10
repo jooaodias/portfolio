@@ -4,7 +4,6 @@ import { env } from './infra/config/env'
 
 // Infrastructure
 import { PrismaPostRepository } from './infra/database/prisma/prisma-post-repository'
-import { closeRedisConnection } from './infra/cache'
 
 // Use Cases
 import {
@@ -96,9 +95,6 @@ async function gracefulShutdown(signal: string) {
     await app.close()
     console.log('✅ Servidor Fastify fechado')
     
-    await closeRedisConnection()
-    console.log('✅ Conexão Redis fechada')
-    
     process.exit(0)
   } catch (err) {
     console.error('❌ Erro ao encerrar:', err)
@@ -117,12 +113,6 @@ const start = async () => {
       host: env.HOST,
     })
     console.log(`🚀 Server running at http://${env.HOST}:${env.PORT}`)
-    
-    if (env.REDIS_URL) {
-      console.log('📦 Redis cache habilitado')
-    } else {
-      console.log('📦 Redis cache desabilitado (REDIS_URL não configurada)')
-    }
   } catch (err) {
     app.log.error(err)
     process.exit(1)

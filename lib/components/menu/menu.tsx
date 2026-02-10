@@ -10,6 +10,7 @@ import { useI18n } from "@/lib/i18n/context"
 import BrazilFlag from "@/public/icons/BRA.svg"
 import USAFlag from "@/public/icons/USA.svg"
 import { useIsMobile } from "@/lib/hooks/useIsMobile"
+import { useFeatureFlag } from "@/lib/hooks/useFeatureFlag"
 
 const SCROLL_OFFSET = 100
 
@@ -23,6 +24,8 @@ export function NavigationMenu() {
   const isMobile = useIsMobile()
   const pathname = usePathname()
   const isOnBlogPage = pathname?.startsWith('/blog')
+  
+  const { isEnabled: isBlogEnabled } = useFeatureFlag('blog_feature')
 
   React.useEffect(() => {
     const timer = setTimeout(() => {
@@ -109,7 +112,14 @@ export function NavigationMenu() {
         "relative flex items-center gap-1.5 bg-gray-900/90 backdrop-blur-md rounded-full border border-gray-800/60 shadow-xl",
         isMobile ? "px-1.5 py-1" : "px-2 py-1.5"
       )}>
-        {menuItems.map((item) => {
+        {menuItems
+          .filter(item => {
+            if (item.href === '/blog' && !isBlogEnabled) {
+              return false
+            }
+            return true
+          })
+          .map((item) => {
           const Icon = item.icon
           const isRoute = item.isRoute
           const isCircular = item.isCircular
