@@ -2,11 +2,21 @@ import { Metadata } from 'next'
 import { getHealth } from '@/lib/services/health'
 import { Footer } from '@/lib/components/footer/footer'
 import { Activity, CheckCircle, XCircle, Clock } from 'lucide-react'
+import { absoluteUrl, SITE_TITLE_TEMPLATE } from '@/lib/seo/site'
+
+const STATUS_DESCRIPTION =
+  'Painel interno com disponibilidade da API do portfólio em tempo real.'
 
 export const metadata: Metadata = {
   title: 'Status',
-  description: 'Status da API e disponibilidade dos serviços.',
+  description: STATUS_DESCRIPTION,
   robots: { index: false, follow: false },
+  alternates: { canonical: absoluteUrl('/status') },
+  openGraph: {
+    title: SITE_TITLE_TEMPLATE.replace('%s', 'Status'),
+    description: STATUS_DESCRIPTION,
+    url: absoluteUrl('/status'),
+  },
 }
 
 export const dynamic = 'force-dynamic'

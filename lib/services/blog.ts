@@ -1,4 +1,4 @@
-import { Post, PostsResponse } from '@/lib/types/blog'
+import { Post, PostListItem, PostsResponse } from '@/lib/types/blog'
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api'
 
@@ -48,4 +48,22 @@ export async function getFeaturedPosts(): Promise<PostsResponse> {
 
 export async function getRecentPosts(limit = 6): Promise<PostsResponse> {
   return getPosts({ published: true, limit })
+}
+
+/** All published posts for sitemap generation (paginates API limit of 50). */
+export async function getAllPublishedPostsForSitemap(): Promise<
+  Pick<PostListItem, 'slug' | 'updatedAt'>[]
+> {
+  const limit = 50
+  const first = await getPosts({ published: true, page: 1, limit })
+  const rows: Pick<PostListItem, 'slug' | 'updatedAt'>[] = first.data.map(
+    (p) => ({ slug: p.slug, updatedAt: p.updatedAt }),
+  )
+  for (let page = 2; page <= first.meta.totalPages; page++) {
+    const pageRes = await getPosts({ published: true, page, limit })
+    rows.push(
+      ...pageRes.data.map((p) => ({ slug: p.slug, updatedAt: p.updatedAt })),
+    )
+  }
+  return rows
 }

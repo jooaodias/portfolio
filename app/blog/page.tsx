@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { PostList } from '@/lib/components/blog'
 import { getPosts } from '@/lib/services/blog'
 import AnimatedContent from '@/lib/components/animated-content/animated-content'
@@ -5,6 +6,29 @@ import { Footer } from '@/lib/components/footer/footer'
 import { BookOpen } from 'lucide-react'
 import { BlogHeader } from './blog-header'
 import { BlogFeatureGate } from '@/lib/components/blog-feature-gate/blog-feature-gate'
+import { absoluteUrl, SITE_TITLE_TEMPLATE } from '@/lib/seo/site'
+
+const BLOG_DESCRIPTION =
+  'Artigos sobre desenvolvimento web, React, Next.js e engenharia de software por João Aleixo.'
+
+export const metadata: Metadata = {
+  title: 'Blog',
+  description: BLOG_DESCRIPTION,
+  alternates: {
+    canonical: absoluteUrl('/blog'),
+  },
+  openGraph: {
+    type: 'website',
+    url: absoluteUrl('/blog'),
+    title: SITE_TITLE_TEMPLATE.replace('%s', 'Blog'),
+    description: BLOG_DESCRIPTION,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: SITE_TITLE_TEMPLATE.replace('%s', 'Blog'),
+    description: BLOG_DESCRIPTION,
+  },
+}
 
 export default async function BlogPage() {
   const { data: posts } = await getPosts({ published: true })
