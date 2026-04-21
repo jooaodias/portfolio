@@ -20,7 +20,7 @@ import {
 import { PostController } from './infra/controller/post-controller'
 
 // Routes, Middlewares & Swagger
-import { registerPostRoutes } from './infra/http/routes'
+import { registerPostRoutes, registerHealthRoutes } from './infra/http/routes'
 import { registerErrorHandler } from './infra/http/middlewares'
 import { registerSwagger } from './infra/http/swagger'
 
@@ -68,25 +68,7 @@ registerErrorHandler(app)
 
 // Register routes
 registerPostRoutes(app, postController)
-
-// Health check
-app.get('/health', {
-  schema: {
-    tags: ['Health'],
-    response: {
-      200: {
-        type: 'object',
-        properties: {
-          status: { type: 'string' },
-          timestamp: { type: 'string', format: 'date-time' },
-        },
-      },
-    },
-  },
-  handler: async () => {
-    return { status: 'ok', timestamp: new Date().toISOString() }
-  },
-})
+registerHealthRoutes(app)
 
 async function gracefulShutdown(signal: string) {
   console.log(`\n🛑 Recebido ${signal}. Encerrando...`)

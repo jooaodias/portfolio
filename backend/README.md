@@ -50,6 +50,8 @@ src/
 │   │   └── post-controller.ts
 │   └── http/
 │       ├── routes/
+│       │   ├── post-routes.ts
+│       │   └── health-routes.ts   # GET /health
 │       ├── middlewares/
 │       └── swagger/
 │
@@ -124,7 +126,7 @@ CORS_ORIGIN="http://localhost:3000"
 | PUT | `/api/posts/:id` | Atualizar post |
 | DELETE | `/api/posts/:id` | Deletar post |
 | PATCH | `/api/posts/:id/toggle-publish` | Publicar/Despublicar |
-| GET | `/health` | Health check |
+| GET | `/health` | Health check — retorna `{ status: "ok", timestamp: "<ISO 8601>" }` |
 
 ### Query Parameters (GET /api/posts)
 

@@ -58,6 +58,11 @@ Portfolio pessoal full stack com blog integrado, desenvolvido com Next.js 16, Fa
 - Feature flags para controle de funcionalidades
 - Painel admin para gerenciamento
 
+### Status Page (`/status`)
+- Exibe se a API está online ou offline em tempo real
+- Mostra timestamp do servidor e horário da verificação
+- Dados sempre frescos (sem cache — `force-dynamic`)
+
 ### Admin Panel (`/blog/admin`)
 - Criar/Editar posts com editor Markdown
 - Publicar/Despublicar posts
@@ -81,6 +86,7 @@ Portfolio pessoal full stack com blog integrado, desenvolvido com Next.js 16, Fa
 about-me/
 ├── app/                      # Next.js App Router
 │   ├── page.tsx              # Home (portfolio)
+│   ├── status/page.tsx       # Status da API (/status)
 │   ├── blog/
 │   │   ├── page.tsx          # Lista de posts
 │   │   ├── [slug]/page.tsx   # Post individual
