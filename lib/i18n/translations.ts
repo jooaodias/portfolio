@@ -64,6 +64,35 @@ export const translations = {
         },
       },
     },
+    // Projects
+    projects: {
+      title: 'Projetos destacados',
+      viewOnGithub: 'Ver no GitHub',
+      items: {
+        agroecologia: {
+          title: 'Site de Agroecologia',
+          subtitle: 'IFSP Campus Campinas · Iniciação Científica',
+          description: {
+            0: 'Desenvolvido durante bolsa de Iniciação Científica junto ao grupo de Ecologia do IFSP Campus Campinas. O projeto consistiu na criação e reformulação do site institucional do núcleo de Agroecologia da instituição, conectando a comunidade acadêmica a práticas sustentáveis e ao trabalho com assentamentos rurais da região de Campinas. Uma experiência que uniu tecnologia, meio ambiente e impacto social.',
+          },
+        },
+        votacidade: {
+          title: 'Votacidade',
+          subtitle: 'Minha Campinas · Iniciação Científica',
+          description: {
+            0: 'Plataforma de participação cidadã desenvolvida em parceria com a ONG Minha Campinas, durante outra bolsa de Iniciação Científica. O Votacidade permite que moradores da cidade votem e participem de decisões municipais de forma digital e acessível. O projeto reforçou minha experiência com desenvolvimento voltado à comunidade e com colaboração em ambientes open source de impacto real.',
+          },
+          metric: '15k+ usuários',
+        },
+        mapaAcessivel: {
+          title: 'Mapa Acessível',
+          subtitle: 'Ensino técnico · Trabalho de conclusão de curso (TCC)',
+          description: {
+            0: 'Projeto de conclusão de curso do ensino técnico, desenvolvido para mapear colaborativamente locais acessíveis a pessoas com deficiência ou mobilidade reduzida. A aplicação permite que usuários contribuam com informações sobre acessibilidade em espaços públicos e privados, promovendo inclusão através da tecnologia. Foi meu primeiro grande projeto autoral, e um dos que mais me orgulho até hoje.',
+          },
+        },
+      },
+    },
     // Social badges
     social: {
       github: 'GitHub',
@@ -150,6 +179,35 @@ export const translations = {
             0: 'Collaboration in an Agile environment (Scrum) focused on continuous delivery and constant product improvement',
             1: 'Development with React.js and Next.js, using Context API, Redux and React Query for state management and performance optimization',
             2: 'Technical documentation and onboarding of new members, promoting standardization',
+          },
+        },
+      },
+    },
+    // Projects
+    projects: {
+      title: 'Featured projects',
+      viewOnGithub: 'View on GitHub',
+      items: {
+        agroecologia: {
+          title: 'Agroecology website',
+          subtitle: 'IFSP Campinas · Undergraduate research (IC)',
+          description: {
+            0: 'Built during a scientific initiation scholarship with the Ecology group at IFSP Campinas. The project involved creating and redesigning the institutional website for the campus agroecology hub, connecting the academic community with sustainable practices and work with rural settlements in the Campinas region—bringing together technology, the environment, and social impact.',
+          },
+        },
+        votacidade: {
+          title: 'Votacidade',
+          subtitle: 'Minha Campinas · Undergraduate research (IC)',
+          description: {
+            0: 'A civic participation platform developed in partnership with the Minha Campinas NGO during another scientific initiation scholarship. Votacidade lets residents vote and take part in municipal decisions digitally and accessibly. It strengthened my experience building community-focused software and collaborating in open source projects with real-world impact.',
+          },
+          metric: '15k+ users',
+        },
+        mapaAcessivel: {
+          title: 'Accessible Map',
+          subtitle: 'Technical high school · Capstone (TCC)',
+          description: {
+            0: 'Technical high school capstone aimed at collaboratively mapping places accessible to people with disabilities or reduced mobility. The app lets users contribute accessibility information for public and private spaces, promoting inclusion through technology. It was my first major authored project and one I am still especially proud of.',
           },
         },
       },
