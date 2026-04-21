@@ -3,11 +3,10 @@ import { Inter, Inter_Tight } from "next/font/google";
 import "@/lib/theme/globals.css";
 import { MainContent } from "./main";
 import { I18nProvider } from "@/lib/i18n/context";
-import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import StructuredData from "@/lib/components/structured-data/structured-data";
-import { ToastProvider } from "@/lib/components/toast-provider/toast-provider";
-import { StatsigProvider } from '@statsig/react-bindings';
 import { Providers } from "./providers/providers";
+import { ToastProviderLazy } from "@/lib/components/toast-provider/toast-provider-lazy";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -98,7 +97,6 @@ export default function RootLayout({
       <head>
         <StructuredData />
       </head>
-      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GA4_ANALYTICS!} />
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA4_ANALYTICS!} />
       <body
         className={`${inter.variable} ${interTight.variable} antialiased`}
@@ -107,7 +105,7 @@ export default function RootLayout({
           <MainContent>
             {children}
           </MainContent>
-          <ToastProvider />
+          <ToastProviderLazy />
         </Providers>
       </body>
     </html>

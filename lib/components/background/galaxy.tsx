@@ -285,23 +285,24 @@ export default function Galaxy({
 
     const mesh = new Mesh(gl, { geometry, program });
     let animateId: number;
-    let isPageVisible = true;
     let frameCount = 0;
-    const targetFPS = 30; // Reduced from 60fps to 30fps
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const targetFPS = prefersReducedMotion ? 10 : 30;
     const frameInterval = 1000 / targetFPS;
     let lastFrameTime = 0;
 
-    // Handle page visibility
     const handleVisibilityChange = () => {
-      isPageVisible = !document.hidden;
+      if (document.hidden) {
+        cancelAnimationFrame(animateId);
+      } else {
+        lastFrameTime = 0;
+        animateId = requestAnimationFrame(update);
+      }
     };
     document.addEventListener('visibilitychange', handleVisibilityChange);
 
     function update(t: number) {
       animateId = requestAnimationFrame(update);
-      
-      // Skip rendering if page is hidden
-      if (!isPageVisible) return;
 
       // Throttle to target FPS
       const elapsed = t - lastFrameTime;

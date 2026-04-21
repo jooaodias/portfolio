@@ -40,7 +40,7 @@ export default function Home() {
                   }`}
                 onLoad={() => setIsImageLoaded(true)}
                 priority
-                quality={95}
+                quality={85}
                 sizes="200px"
               />
             </div>

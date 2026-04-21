@@ -1,6 +1,6 @@
 'use client'
 
-import React, { createContext, useContext, useState, useLayoutEffect, ReactNode } from 'react'
+import React, { createContext, useContext, useState, ReactNode } from 'react'
 import { Locale, translations } from './translations'
 
 interface I18nContextType {
@@ -11,21 +11,19 @@ interface I18nContextType {
 
 const I18nContext = createContext<I18nContextType | undefined>(undefined)
 
-export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>('pt-BR')
-
-  useLayoutEffect(() => {
-    const savedLocale = localStorage.getItem('locale') as Locale | null
-    if (savedLocale && (savedLocale === 'pt-BR' || savedLocale === 'en-US')) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setLocaleState(savedLocale)
-      return
-    }
-    
+function detectLocale(): Locale {
+  try {
+    const saved = localStorage.getItem('locale') as Locale | null
+    if (saved === 'pt-BR' || saved === 'en-US') return saved
     const browserLang = navigator.language || 'pt-BR'
-    const detectedLocale = browserLang.startsWith('pt') ? 'pt-BR' : 'en-US'
-    setLocaleState(detectedLocale)
-  }, [])
+    return browserLang.startsWith('pt') ? 'pt-BR' : 'en-US'
+  } catch {
+    return 'pt-BR'
+  }
+}
+
+export function I18nProvider({ children }: { children: ReactNode }) {
+  const [locale, setLocaleState] = useState<Locale>(detectLocale)
 
   const setLocale = (newLocale: Locale) => {
     setLocaleState(newLocale)

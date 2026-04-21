@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 'use client'
 
 import React from "react";
@@ -25,8 +24,10 @@ const ExperienceCardComponent = ({ exp }: ExperienceCardProps) => {
             <div className="relative z-10">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
                     <div className="flex items-start gap-4">
-                        <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-xl group-hover:border-purple-500/30 transition-all duration-300 group-hover:scale-110">
-                            <img src={exp.icon} alt={exp.company} width={40} height={40} className="object-cover w-12 h-12" />
+                        <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-xl group-hover:border-purple-500/30 transition-all duration-300 group-hover:scale-110 w-12 h-12 overflow-hidden">
+                            {exp.icon && (
+                                <Image src={exp.icon} alt={exp.company} width={48} height={48} className="object-cover w-12 h-12 rounded-xl" loading="lazy" />
+                            )}
                         </div>
                         <div>
                             <h3 className="text-xl font-bold text-white mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300">{exp.role}</h3>

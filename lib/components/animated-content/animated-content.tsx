@@ -44,7 +44,8 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
         entries.forEach((entry) => {
           if (entry.isIntersecting && !hasAnimated.current) {
             hasAnimated.current = true;
-            
+            observer.disconnect();
+
             if (delay > 0) {
               setTimeout(() => {
                 setIsVisible(true);
@@ -63,7 +64,7 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
       },
       {
         threshold: threshold,
-        rootMargin: '0px'
+        rootMargin: '50px',
       }
     );
 
@@ -82,8 +83,8 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
       ? 'translate3d(0, 0, 0) scale(1)' 
       : `translate${axis}(${offset}px) scale(${scale})`,
     opacity: isVisible ? 1 : (animateOpacity ? initialOpacity : 1),
-    transition: `transform ${duration}s ${ease} ${delay}s, opacity ${duration}s ${ease} ${delay}s`,
-    willChange: isVisible ? 'auto' : 'transform, opacity'
+    transition: `transform ${duration}s ${ease}, opacity ${duration}s ${ease}`,
+    willChange: isVisible ? 'auto' : 'transform, opacity',
   };
 
   return (

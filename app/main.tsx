@@ -1,7 +1,12 @@
 'use client'
 
-import Galaxy from "@/lib/components/background/galaxy"
+import dynamic from "next/dynamic"
 import { NavigationMenu } from "@/lib/components/menu/menu"
+
+const Galaxy = dynamic(() => import("@/lib/components/background/galaxy"), {
+    ssr: false,
+    loading: () => <div className="absolute inset-0 bg-zinc-950" />,
+})
 
 export function MainContent({ children }: { children: React.ReactNode } ) {
     return (
