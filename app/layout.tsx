@@ -7,6 +7,14 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import StructuredData from "@/lib/components/structured-data/structured-data";
 import { Providers } from "./providers/providers";
 import { ToastProviderLazy } from "@/lib/components/toast-provider/toast-provider-lazy";
+import {
+  DEFAULT_METADATA_DESCRIPTION,
+  DEFAULT_METADATA_TITLE,
+  getSiteUrl,
+  SITE_NAME,
+  SITE_OG_IMAGE_PATH,
+  SITE_TITLE_TEMPLATE,
+} from "@/lib/seo/site";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -19,15 +27,17 @@ const interTight = Inter_Tight({
   display: "swap",
 });
 
+const siteUrl = getSiteUrl();
+
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://joaoaleixo.dev'),
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "João Aleixo - Full Stack Developer",
-    template: "%s | João Aleixo"
+    default: DEFAULT_METADATA_TITLE,
+    template: SITE_TITLE_TEMPLATE,
   },
-  description: "Desenvolvedor Full Stack especializado em React.js e Next.js com 5+ anos de experiência. Apaixonado por criar aplicações web modernas e escaláveis.",
+  description: DEFAULT_METADATA_DESCRIPTION,
   keywords: ['Full Stack Developer', 'React', 'Next.js', 'TypeScript', 'JavaScript', 'Web Development', 'João Aleixo', 'Desenvolvedor Full Stack'],
-  authors: [{ name: 'João Vitor Aleixo' }],
+  authors: [{ name: 'João Vitor Aleixo', url: siteUrl }],
   creator: 'João Vitor Aleixo',
   publisher: 'João Vitor Aleixo',
   formatDetection: {
@@ -48,29 +58,29 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'pt_BR',
     alternateLocale: 'en_US',
-    url: process.env.NEXT_PUBLIC_BASE_URL,
-    title: "João Aleixo - Full Stack Developer",
-    description: "Desenvolvedor Full Stack especializado em React.js e Next.js com 5+ anos de experiência.",
-    siteName: 'João Aleixo Portfolio',
+    url: siteUrl,
+    title: DEFAULT_METADATA_TITLE,
+    description: DEFAULT_METADATA_DESCRIPTION,
+    siteName: `${SITE_NAME} — Portfolio`,
     images: [
       {
-        url: "/images/its-me.jpeg",
+        url: SITE_OG_IMAGE_PATH,
         width: 1200,
         height: 630,
-        alt: "João Aleixo - Full Stack Developer"
+        alt: DEFAULT_METADATA_TITLE,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "João Aleixo - Full Stack Developer",
-    description: "Desenvolvedor Full Stack especializado em React.js e Next.js com 5+ anos de experiência.",
+    title: DEFAULT_METADATA_TITLE,
+    description: DEFAULT_METADATA_DESCRIPTION,
     images: [
       {
-        url: "/images/its-me.jpeg",
+        url: SITE_OG_IMAGE_PATH,
         width: 1200,
         height: 630,
-        alt: "João Aleixo - Full Stack Developer"
+        alt: DEFAULT_METADATA_TITLE,
       },
     ],
   },

@@ -1,13 +1,18 @@
 import { MetadataRoute } from 'next'
+import { getSiteUrl } from '@/lib/seo/site'
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://portfolio-joao-dias.vercel.app/'
-  
+  const baseUrl = getSiteUrl()
+
   return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-    },
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/blog/admin'],
+      },
+    ],
     sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
   }
 }

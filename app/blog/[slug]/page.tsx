@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { getPostBySlug } from '@/lib/services/blog'
@@ -8,10 +9,57 @@ import { BackLink } from './back-link'
 import { PostContent } from './post-content'
 import { AuthorSection } from './author-section'
 import { BlogFeatureGate } from '@/lib/components/blog-feature-gate/blog-feature-gate'
-
+import { BlogPostJsonLd } from '@/lib/components/structured-data/blog-post-json-ld'
+import {
+  absoluteUrl,
+  resolveOgImageUrl,
+  truncateMetaDescription,
+} from '@/lib/seo/site'
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>
+}
+
+export async function generateMetadata({
+  params,
+}: BlogPostPageProps): Promise<Metadata> {
+  const { slug } = await params
+  let post
+  try {
+    post = await getPostBySlug(slug)
+  } catch {
+    notFound()
+  }
+  if (!post) {
+    notFound()
+  }
+
+  const description = truncateMetaDescription(post.excerpt)
+  const url = absoluteUrl(`/blog/${post.slug}`)
+  const ogImage = resolveOgImageUrl(post.coverImage)
+
+  return {
+    title: post.title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: 'article',
+      url,
+      title: post.title,
+      description,
+      publishedTime: post.createdAt,
+      modifiedTime: post.updatedAt,
+      authors: [post.authorName],
+      tags: post.tags,
+      images: [{ url: ogImage, width: 1200, height: 630, alt: post.title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description,
+      images: [ogImage],
+    },
+  }
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -30,6 +78,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <BlogFeatureGate>
+      <BlogPostJsonLd post={post} />
       <div className="flex flex-col min-h-screen">
         <article className="grow w-full max-w-4xl mx-auto px-6 py-12">
           <AnimatedContent delay={0} duration={0.4}>
