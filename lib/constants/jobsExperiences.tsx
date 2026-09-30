@@ -12,7 +12,7 @@ export const getExperiences = (t: (key: string) => string): JobExperience[] => [
       t('jobs.experiences.mercadolivre.description.2'),
     ],
     technologies: ["React.js", "Node.js", "TypeScript", "SSR", "Jest", "React Testing Library", "Grafana", "Datadog"],
-    icon: "https://cdn.jsdelivr.net/npm/@thesvg/icons/icons/mercado-libre.svg"
+    icon: "https://upload.wikimedia.org/wikipedia/pt/0/04/Logotipo_MercadoLivre.png"
   },
   {
     company: "V4 Company",
