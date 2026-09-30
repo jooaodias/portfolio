@@ -38,9 +38,18 @@ export const translations = {
       achievements: 'Principais Conquistas',
       current: 'Atual',
       experiences: {
+        mercadolivre: {
+          role: 'Software Engineer Front End',
+          period: 'Mai 2026 - Atual',
+          description: {
+            0: 'Desenvolvimento de sistemas com React, Node.js, TypeScript e SSR, com foco em performance e qualidade',
+            1: 'Condução de demandas cross-team, da análise à implantação, em parceria com Produto e UX',
+            2: 'Ownership de temas, participação em deploys e uso de IA, AI-SDD e testes automatizados no ciclo de desenvolvimento'
+          },
+        },
         v4: {
           role: 'Desenvolvedor Frontend Pleno',
-          period: 'Mar 2025 - Atual',
+          period: 'Mar 2025 - Abr 2026',
           description: {
             0: 'Desenvolvimento e manutenção de aplicações web full stack de alta disponibilidade, utilizadas por mais de 4 mil usuários ativos, com foco em arquitetura frontend e APIs backend em Node.js',
             1: 'Criação de APIs RESTful com Node.js e Fastify, integração com bancos de dados PostgreSQL, e implementação de arquiteturas de microserviços',
@@ -157,9 +166,18 @@ export const translations = {
       achievements: 'Main Achievements',
       current: 'Current',
       experiences: {
+        mercadolivre: {
+          role: 'Front End Software Engineer',
+          period: 'May 2026 - Current',
+          description: {
+            0: 'Development of systems with React, Node.js, TypeScript and SSR, with a focus on performance and quality',
+            1: 'Leading cross-team initiatives, from analysis to deployment, in partnership with Product and UX',
+            2: 'Ownership of key initiatives, participation in deployments, and use of AI, AI-SDD and automated testing throughout the development cycle'
+          },
+        },
         v4: {
           role: 'Mid-level Frontend Developer',
-          period: 'Mar 2025 - Current',
+          period: 'Mar 2025 - Apr 2026',
           description: {
             0: 'Development and maintenance of high-availability full stack web applications, used by more than 4,000 active users, focusing on frontend architecture and Node.js backend APIs',
             1: 'Creation of RESTful APIs with Node.js and Fastify, PostgreSQL database integration, and implementation of microservices architectures',
@@ -240,4 +258,3 @@ export const translations = {
     }
   },
 } as const
-

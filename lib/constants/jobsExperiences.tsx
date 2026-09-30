@@ -3,6 +3,18 @@ import { JobExperience } from "../types/jobs";
 
 export const getExperiences = (t: (key: string) => string): JobExperience[] => [
   {
+    company: "Mercado Livre",
+    role: t('jobs.experiences.mercadolivre.role'),
+    period: t('jobs.experiences.mercadolivre.period'),
+    description: [
+      t('jobs.experiences.mercadolivre.description.0'),
+      t('jobs.experiences.mercadolivre.description.1'),
+      t('jobs.experiences.mercadolivre.description.2'),
+    ],
+    technologies: ["React.js", "Node.js", "TypeScript", "SSR", "Jest", "React Testing Library", "Grafana", "Datadog"],
+    icon: "https://http2.mlstatic.com/static/org-img/homesnw/mercado-libre.png?v=2"
+  },
+  {
     company: "V4 Company",
     role: t('jobs.experiences.v4.role'),
     period: t('jobs.experiences.v4.period'),
@@ -30,6 +42,6 @@ export const getExperiences = (t: (key: string) => string): JobExperience[] => [
       t('jobs.experiences.venturus.description.2'),
     ],
     technologies: ["React.js", "Next.js", "Redux", "React Query", "TypeScript"],
-    icon: "https://media.licdn.com/dms/image/v2/D4D0BAQEIThwZwzZCEA/company-logo_200_200/B4DZaDCK6qHwAM-/0/1745955106878/venturus_logo?e=2147483647&v=beta&t=HBSf1iSh-bcIM0x42yX0auQu2Cd5b4KRJIvdvIABsKs"
+    icon: "https://media.licdn.com/dms/image/v2/D4D0BAQEIThwZwzZCEA/company-logo_200_200/B4DZaDCK6qHwAM-/0/1745955106878/venturus_logo?e=2147483647&v=beta&t=HBSf1iSh-bcIM0x42yX0auQu2Cd5b4KRJIvdIABsKs"
   }
 ];
