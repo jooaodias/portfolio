@@ -39,23 +39,23 @@ export function PostContent({
   return (
     <>
       {/* Title */}
-      <h1 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+      <h1 className="text-2xl sm:text-4xl font-bold tracking-tight text-white mb-5 leading-tight">
         {displayTitle}
       </h1>
 
       {/* Meta */}
-      <div className="flex flex-wrap items-center gap-4 text-gray-400 text-sm mb-8">
+      <div className="flex flex-wrap items-center gap-4 text-zinc-400 text-sm pb-6 mb-8 border-b border-white/10">
         <span className="flex items-center gap-2">
-          <User className="w-4 h-4" />
+          <User className="w-4 h-4 text-[#38bdf8]" aria-hidden="true" />
           {authorName}
         </span>
         <span className="flex items-center gap-2">
-          <Calendar className="w-4 h-4" />
+          <Calendar className="w-4 h-4 text-zinc-500" aria-hidden="true" />
           {formattedDate}
         </span>
         {readingTime && (
           <span className="flex items-center gap-2">
-            <Clock className="w-4 h-4" />
+            <Clock className="w-4 h-4 text-zinc-500" aria-hidden="true" />
             {readingTime} min {locale === 'en-US' ? 'read' : 'de leitura'}
           </span>
         )}
@@ -63,20 +63,20 @@ export function PostContent({
       </div>
 
       {/* Content */}
-      <AnimatedContent delay={0.3} duration={0.5}>
+      <AnimatedContent delay={0.15} duration={0.45}>
         <div
           className="prose prose-invert prose-lg max-w-none
             prose-headings:text-white prose-headings:font-bold
             prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
             prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
-            prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-4
-            prose-a:text-purple-400 prose-a:no-underline hover:prose-a:underline
+            prose-p:text-zinc-300 prose-p:leading-relaxed prose-p:mb-4
+            prose-a:text-[#38bdf8] prose-a:no-underline hover:prose-a:underline
             prose-strong:text-white prose-strong:font-semibold
-            prose-code:text-purple-300 prose-code:bg-gray-800 prose-code:px-2 prose-code:py-0.5 prose-code:rounded
-            prose-pre:bg-gray-900 prose-pre:border prose-pre:border-gray-700
-            prose-blockquote:border-l-purple-500 prose-blockquote:bg-gray-900/50 prose-blockquote:py-2 prose-blockquote:px-4
-            prose-ul:text-gray-300 prose-ol:text-gray-300
-            prose-li:marker:text-purple-400"
+            prose-code:text-[#38bdf8] prose-code:bg-white/[0.06] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
+            prose-pre:bg-[#0a0b0e] prose-pre:border prose-pre:border-white/10
+            prose-blockquote:border-l-[#38bdf8] prose-blockquote:bg-white/[0.03] prose-blockquote:py-2 prose-blockquote:px-4
+            prose-ul:text-zinc-300 prose-ol:text-zinc-300
+            prose-li:marker:text-[#38bdf8]"
         >
           <ReactMarkdown remarkPlugins={[remarkGfm]}>
             {displayContent}
