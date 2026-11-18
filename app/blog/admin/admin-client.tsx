@@ -40,8 +40,21 @@ export default function AdminClient() {
   }, [])
 
   useEffect(() => {
-    fetchPosts()
-  }, [fetchPosts])
+    let active = true
+    getAllPosts({ page: 1, limit: 50 })
+      .then((response) => {
+        if (active) setPosts(response.data)
+      })
+      .catch(() => {
+        if (active) toast.error('Erro ao carregar posts')
+      })
+      .finally(() => {
+        if (active) setLoading(false)
+      })
+    return () => {
+      active = false
+    }
+  }, [])
 
   const handleCreate = () => {
     setSelectedPost(null)
