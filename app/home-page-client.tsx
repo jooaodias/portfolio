@@ -128,38 +128,38 @@ export default function HomePageClient() {
           </div>
 
           {/* Card 2: Scale & Track Record */}
-          <div className="bg-[#111216] border border-white/10 rounded-2xl p-6 flex flex-col justify-between">
+          <div className="bg-[#111216] border border-white/10 rounded-2xl p-6 flex flex-col justify-start gap-4">
             <h2 className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
               {t('home.bento.impactTitle')}
             </h2>
 
-            <div className="divide-y divide-white/10 my-2">
-              <div className="py-3.5 flex items-center justify-between gap-3">
-                <div className="flex items-center gap-2.5 text-zinc-400">
-                  <Calendar className="w-4 h-4 text-[#38bdf8]" aria-hidden="true" />
-                  <span className="text-xs sm:text-sm">{t('stats.yearsExperience')}</span>
+            <div className="divide-y divide-white/10">
+              <div className="pb-3.5 flex items-center justify-between gap-3">
+                <div className="flex items-center gap-2.5 text-zinc-400 min-w-0">
+                  <Calendar className="w-4 h-4 text-[#38bdf8] shrink-0" aria-hidden="true" />
+                  <span className="text-xs sm:text-sm whitespace-nowrap">{t('stats.yearsExperience')}</span>
                 </div>
-                <span className="text-xl sm:text-2xl font-bold text-white tabular-nums">
+                <span className="text-xl sm:text-2xl font-bold text-white tabular-nums shrink-0">
                   {yearsOfExperience}+
                 </span>
               </div>
 
               <div className="py-3.5 flex items-center justify-between gap-3">
-                <div className="flex items-center gap-2.5 text-zinc-400">
-                  <Users className="w-4 h-4 text-[#FFE600]" aria-hidden="true" />
-                  <span className="text-xs sm:text-sm">{t('home.bento.dailyUsersLabel')}</span>
+                <div className="flex items-center gap-2.5 text-zinc-400 min-w-0">
+                  <Users className="w-4 h-4 text-[#FFE600] shrink-0" aria-hidden="true" />
+                  <span className="text-xs sm:text-sm whitespace-nowrap">{t('home.bento.dailyUsersLabel')}</span>
                 </div>
-                <span className="text-lg sm:text-xl font-bold text-white">
+                <span className="text-lg sm:text-xl font-bold text-white shrink-0">
                   {t('home.bento.dailyUsersValue')}
                 </span>
               </div>
 
               <div className="pt-3.5 flex items-center justify-between gap-3">
-                <div className="flex items-center gap-2.5 text-zinc-400">
-                  <Briefcase className="w-4 h-4 text-[#38bdf8]" aria-hidden="true" />
-                  <span className="text-xs sm:text-sm">{t('stats.companies')}</span>
+                <div className="flex items-center gap-2.5 text-zinc-400 min-w-0">
+                  <Briefcase className="w-4 h-4 text-[#38bdf8] shrink-0" aria-hidden="true" />
+                  <span className="text-xs sm:text-sm whitespace-nowrap">{t('stats.companies')}</span>
                 </div>
-                <span className="text-xl sm:text-2xl font-bold text-white tabular-nums">
+                <span className="text-xl sm:text-2xl font-bold text-white tabular-nums shrink-0">
                   {companiesCount}
                 </span>
               </div>
@@ -167,7 +167,7 @@ export default function HomePageClient() {
           </div>
 
           {/* Card 3: Core Stack & Workflow */}
-          <div className="md:col-span-2 bg-[#111216] border border-white/10 rounded-2xl p-6 flex flex-col justify-between gap-4">
+          <div className="md:col-span-2 bg-[#111216] border border-white/10 rounded-2xl p-6 flex flex-col justify-start gap-4">
             <h2 className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
               {t('home.bento.stackTitle')}
             </h2>
