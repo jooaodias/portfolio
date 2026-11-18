@@ -42,7 +42,7 @@ export const translations = {
           role: 'Software Engineer Front End',
           period: 'Mai 2026 - Atual',
           description: {
-            0: 'Desenvolvimento de sistemas com React, Node.js, TypeScript e SSR, com foco em performance e qualidade',
+            0: 'Atuação na área de fintech do Mercado Pago no desenvolvimento de sistemas com React, Node.js, TypeScript e SSR, com foco em performance e qualidade',
             1: 'Condução de demandas cross-team, da análise à implantação, em parceria com Produto e UX',
             2: 'Ownership de temas, participação em deploys e uso de IA, AI-SDD e testes automatizados no ciclo de desenvolvimento'
           },
@@ -170,7 +170,7 @@ export const translations = {
           role: 'Front End Software Engineer',
           period: 'May 2026 - Current',
           description: {
-            0: 'Development of systems with React, Node.js, TypeScript and SSR, with a focus on performance and quality',
+            0: 'Working in Mercado Pago’s fintech area, developing systems with React, Node.js, TypeScript and SSR, with a focus on performance and quality',
             1: 'Leading cross-team initiatives, from analysis to deployment, in partnership with Product and UX',
             2: 'Ownership of key initiatives, participation in deployments, and use of AI, AI-SDD and automated testing throughout the development cycle'
           },

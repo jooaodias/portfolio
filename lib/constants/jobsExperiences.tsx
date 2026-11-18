@@ -1,9 +1,8 @@
-import { Code, Zap } from "lucide-react";
 import { JobExperience } from "../types/jobs";
 
 export const getExperiences = (t: (key: string) => string): JobExperience[] => [
   {
-    company: "Mercado Livre",
+    company: "Mercado Livre · Mercado Pago",
     role: t('jobs.experiences.mercadolivre.role'),
     period: t('jobs.experiences.mercadolivre.period'),
     description: [
@@ -12,7 +11,7 @@ export const getExperiences = (t: (key: string) => string): JobExperience[] => [
       t('jobs.experiences.mercadolivre.description.2'),
     ],
     technologies: ["React.js", "Node.js", "TypeScript", "SSR", "Jest", "React Testing Library", "Grafana", "Datadog"],
-    icon: "https://http2.mlstatic.com/static/org-img/homesnw/mercado-libre.png?v=2"
+    icon: "/icons/mercado-livre.svg"
   },
   {
     company: "V4 Company",
