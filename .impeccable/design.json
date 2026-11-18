@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-17T23:58:30-03:00",
+  "title": "Design System: João Aleixo Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Electric Cobalt",
+        "canonical": "#2563eb",
+        "tonalRamp": ["#0a193d", "#122b66", "#1a3f94", "#2563eb", "#4f83f1", "#7da3f6", "#acc4fa", "#dbe7fe"]
+      },
+      "primary-accent": {
+        "role": "primary",
+        "displayName": "Vivid Violet",
+        "canonical": "#9333ea",
+        "tonalRamp": ["#280b45", "#431470", "#651fa8", "#9333ea", "#aa5ef0", "#c089f5", "#d8b6f9", "#f0e2fd"]
+      },
+      "secondary-accent": {
+        "role": "secondary",
+        "displayName": "Magenta Spark",
+        "canonical": "#ec4899",
+        "tonalRamp": ["#450c27", "#6e1640", "#a62563", "#ec4899", "#f16eb0", "#f595c6", "#f9bddc", "#fde5f1"]
+      },
+      "success": {
+        "role": "secondary",
+        "displayName": "Emerald Signal",
+        "canonical": "#4ade80",
+        "tonalRamp": ["#0a2915", "#134725", "#1e6e3a", "#4ade80", "#71e69b", "#99eeb7", "#c1f5d3", "#e7fcf0"]
+      },
+      "space-void": {
+        "role": "neutral",
+        "displayName": "Deep Space Void",
+        "canonical": "#06070d",
+        "tonalRamp": ["#06070d", "#0e101c", "#181c2e", "#252b42", "#39415e", "#5b6482", "#8d95b0", "#cbd0e0"]
+      },
+      "surface-card": {
+        "role": "neutral",
+        "displayName": "Obsidian Card",
+        "canonical": "#111827",
+        "tonalRamp": ["#090d16", "#111827", "#1d273b", "#2d3b57", "#445575", "#687a99", "#97a6bf", "#ced6e3"]
+      },
+      "surface-elevated": {
+        "role": "neutral",
+        "displayName": "Slate Surface",
+        "canonical": "#1f2937",
+        "tonalRamp": ["#0f141c", "#1f2937", "#2e3b4e", "#415269", "#5c6f87", "#8092a8", "#aab6c7", "#d7dde6"]
+      },
+      "border-subtle": {
+        "role": "neutral",
+        "displayName": "Hairline Slate",
+        "canonical": "#1f2937",
+        "tonalRamp": ["#0f141c", "#1f2937", "#2e3b4e", "#415269", "#5c6f87", "#8092a8", "#aab6c7", "#d7dde6"]
+      },
+      "text-primary": {
+        "role": "neutral",
+        "displayName": "Pure White",
+        "canonical": "#ffffff",
+        "tonalRamp": ["#1f2937", "#374151", "#4b5563", "#6b7280", "#9ca3af", "#d1d5db", "#e5e7eb", "#ffffff"]
+      },
+      "text-secondary": {
+        "role": "neutral",
+        "displayName": "Silver Mist",
+        "canonical": "#d1d5db",
+        "tonalRamp": ["#1f2937", "#374151", "#4b5563", "#6b7280", "#9ca3af", "#b8bec8", "#d1d5db", "#f3f4f6"]
+      },
+      "text-muted": {
+        "role": "neutral",
+        "displayName": "Muted Pewter",
+        "canonical": "#9ca3af",
+        "tonalRamp": ["#111827", "#1f2937", "#374151", "#4b5563", "#6b7280", "#848c99", "#9ca3af", "#e5e7eb"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero typing headline." },
+      "headline": { "displayName": "Headline", "purpose": "Section headings." },
+      "title": { "displayName": "Title", "purpose": "Card role and project titles." },
+      "body": { "displayName": "Body", "purpose": "Bio paragraphs and experience descriptions." },
+      "label": { "displayName": "Label", "purpose": "Achievement subheaders, dates, and tech chips." }
+    },
+    "shadows": [
+      {
+        "name": "hover-glow-violet",
+        "value": "0 20px 25px -5px rgba(168, 85, 247, 0.15)",
+        "purpose": "Subtle elevation glow on hovered experience cards and primary buttons."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Confident reveal easing for AnimatedContent sections."
+      },
+      {
+        "name": "transition-standard",
+        "value": "300ms cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Hover color, border, and subtle scale feedback on cards, buttons, and chips."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary hero CTA with electric blue-to-violet gradient shifting toward magenta on hover.",
+      "html": "<a href=\"#jobs\" class=\"ds-btn-primary\">Ver Experiências</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; padding: 12px 24px; border-radius: 8px; background: linear-gradient(to right, #2563eb, #9333ea); color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 1rem; font-weight: 600; text-decoration: none; transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease; } .ds-btn-primary:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(168, 85, 247, 0.35); filter: brightness(1.08); } .ds-btn-primary:focus-visible { outline: 2px solid #9333ea; outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Ghost-slate contact CTA with 2px border shifting to violet on hover.",
+      "html": "<a href=\"mailto:joaovitordias92040@gmail.com\" class=\"ds-btn-secondary\">Entre em Contato</a>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; padding: 12px 24px; border-radius: 8px; background: rgba(31, 41, 55, 0.8); border: 2px solid #374151; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 1rem; font-weight: 600; text-decoration: none; transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; } .ds-btn-secondary:hover { transform: scale(1.05); border-color: #9333ea; box-shadow: 0 10px 20px rgba(168, 85, 247, 0.25); } .ds-btn-secondary:focus-visible { outline: 2px solid #9333ea; outline-offset: 2px; }"
+    },
+    {
+      "name": "Technology Chip",
+      "kind": "chip",
+      "refersTo": "chip-tech",
+      "description": "Compact pill badge listing stack technologies inside experience and project cards.",
+      "html": "<span class=\"ds-chip-tech\">TypeScript</span>",
+      "css": ".ds-chip-tech { display: inline-flex; align-items: center; padding: 2px 10px; border-radius: 9999px; background: rgba(31, 41, 55, 0.35); border: 1px solid rgba(55, 65, 81, 0.6); color: #d1d5db; font-family: Inter, system-ui, sans-serif; font-size: 0.75rem; font-weight: 500; transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease; } .ds-chip-tech:hover { transform: scale(1.05); border-color: rgba(168, 85, 247, 0.5); background: linear-gradient(to right, rgba(59, 130, 246, 0.2), rgba(168, 85, 247, 0.2)); }"
+    },
+    {
+      "name": "Experience Card",
+      "kind": "card",
+      "refersTo": "card-experience",
+      "description": "Flat-by-default dark tonal card for work history with hover border glow and achievements list.",
+      "html": "<article class=\"ds-card-exp\"><div class=\"ds-card-exp-head\"><div><h3 class=\"ds-card-exp-role\">Software Engineer Front End</h3><p class=\"ds-card-exp-company\">Mercado Livre · Mercado Pago</p></div><span class=\"ds-card-exp-period\">Mai 2026 - Atual</span></div><p class=\"ds-card-exp-desc\">Atuação na área de fintech do Mercado Pago com React, Node.js, TypeScript e SSR.</p></article>",
+      "css": ".ds-card-exp { background: linear-gradient(to bottom right, rgba(17, 24, 39, 0.85), rgba(31, 41, 55, 0.45)); border: 1px solid rgba(31, 41, 55, 0.8); border-radius: 16px; padding: 28px; color: #d1d5db; font-family: Inter, system-ui, sans-serif; transition: border-color 0.4s ease, box-shadow 0.4s ease; } .ds-card-exp:hover { border-color: rgba(168, 85, 247, 0.5); box-shadow: 0 20px 25px -5px rgba(168, 85, 247, 0.12); } .ds-card-exp-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 16px; } .ds-card-exp-role { margin: 0 0 4px; font-size: 1.25rem; font-weight: 700; color: #ffffff; } .ds-card-exp-company { margin: 0; font-size: 1rem; font-weight: 500; color: #d1d5db; } .ds-card-exp-period { font-size: 0.75rem; font-weight: 500; color: #9ca3af; white-space: nowrap; } .ds-card-exp-desc { margin: 0; line-height: 1.625; color: #d1d5db; }"
+    },
+    {
+      "name": "Floating Navigation Pill",
+      "kind": "nav",
+      "refersTo": "nav-floating",
+      "description": "Top-pinned translucent pill navigation bar with active state indicator.",
+      "html": "<nav class=\"ds-nav-pill\"><a href=\"#home\" class=\"ds-nav-link ds-nav-link-active\">Início</a><a href=\"#jobs\" class=\"ds-nav-link\">Trabalhos</a><a href=\"#projects\" class=\"ds-nav-link\">Projetos</a></nav>",
+      "css": ".ds-nav-pill { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 9999px; background: rgba(17, 24, 39, 0.8); border: 1px solid rgba(55, 65, 81, 0.6); backdrop-filter: blur(12px); font-family: Inter, system-ui, sans-serif; } .ds-nav-link { padding: 6px 12px; border-radius: 9999px; font-size: 0.875rem; font-weight: 500; color: #9ca3af; text-decoration: none; transition: color 0.2s ease, background 0.2s ease; } .ds-nav-link:hover, .ds-nav-link-active { color: #ffffff; background: rgba(255, 255, 255, 0.1); } .ds-nav-link:focus-visible { outline: 2px solid #9333ea; outline-offset: 2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Night-Sky Workbench",
+    "overview": "This design system frames a software engineer's portfolio against an immediate, deep-space canvas (`space-void`) that prioritizes fast first paint and effortless reading on both high-DPI monitors and budget laptops or mobile devices. Atmospheric depth comes from lightweight CSS radial nebulae and a bounded viewport starfield rather than heavy full-page shaders.\n\nEvery surface feels direct, confident, and responsive: cards sit quietly in dark tonal layers with hairline borders at rest, reserving luminous accents and subtle motion for direct user interaction.",
+    "keyCharacteristics": [
+      "Always-dark space canvas with zero light-mode flash.",
+      "Flat-by-default tonal cards that reveal subtle violet/blue accents on hover.",
+      "Crisp geometric sans-serif typography (`Inter` and `Inter Tight`) tuned for high-contrast scanning.",
+      "Lightweight, `prefers-reduced-motion`-aware transitions that never block content visibility."
+    ],
+    "rules": [
+      {
+        "name": "The Always-Dark Canvas Rule",
+        "body": "The root document never falls back to a light background regardless of OS color scheme; `color-scheme: dark` and `space-void` are always active so light foreground text is never stranded.",
+        "section": "colors"
+      },
+      {
+        "name": "The Restrained Accent Rule",
+        "body": "Electric Cobalt and Vivid Violet are reserved for interactive triggers, active states, and hover highlights; body copy and card backgrounds stay strictly neutral.",
+        "section": "colors"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Cards and containers rest flat against the space backdrop with 1px hairline borders; colored glows and elevation shadows activate strictly on hover or focus.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep background effects bounded to the viewport (`position: fixed`) with `devicePixelRatio` capped at `1.5` and static fallbacks for `prefers-reduced-motion: reduce`.",
+      "Do keep hero LCP elements (such as the profile avatar) immediately visible (`opacity: 1`) without blocking behind delayed IntersectionObserver reveals.",
+      "Do host company logos and recurring UI icons locally in `public/icons/` so external CDNs or hotlink limits never break cards."
+    ],
+    "donts": [
+      "Don't run multi-pass per-pixel WebGL fragment shaders across full-document-height canvases.",
+      "Don't rely on OS `prefers-color-scheme: light` to set a light page background on this dark-themed portfolio.",
+      "Don't animate layout-triggering properties (`width`, `height`, `top`, `left`) or leave continuous `animate-pulse` repaints on large blurred layers."
+    ]
+  }
+}
