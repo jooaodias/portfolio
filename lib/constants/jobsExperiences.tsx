@@ -11,6 +11,13 @@ export const getExperiences = (t: (key: string) => string): JobExperience[] => [
       t('jobs.experiences.mercadolivre.description.2'),
     ],
     technologies: ["React.js", "Node.js", "TypeScript", "SSR", "Jest", "React Testing Library", "Grafana", "Datadog"],
+    achievements: [
+      t('jobs.experiences.mercadolivre.achievements.0'),
+      t('jobs.experiences.mercadolivre.achievements.1'),
+      t('jobs.experiences.mercadolivre.achievements.2'),
+      t('jobs.experiences.mercadolivre.achievements.3'),
+      t('jobs.experiences.mercadolivre.achievements.4'),
+    ],
     icon: "/icons/mercado-livre.png"
   },
   {
@@ -29,7 +36,7 @@ export const getExperiences = (t: (key: string) => string): JobExperience[] => [
       t('jobs.experiences.v4.achievements.1'),
       t('jobs.experiences.v4.achievements.2'),
     ],
-    icon: "https://i.imgur.com/pujrYSq.png"
+    icon: "/icons/v4-company.png"
   },
   {
     company: "Venturus",

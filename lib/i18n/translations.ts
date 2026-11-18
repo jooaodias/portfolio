@@ -46,6 +46,13 @@ export const translations = {
             1: 'Condução de demandas cross-team, da análise à implantação, em parceria com Produto e UX',
             2: 'Ownership de temas, participação em deploys e uso de IA, AI-SDD e testes automatizados no ciclo de desenvolvimento'
           },
+          achievements: {
+            0: 'Atuação no desenvolvimento de aplicações financeiras utilizadas no dia a dia por milhões de pessoas',
+            1: 'Ownership de múltiplos temas, acompanhando métricas de negócio e performance para compartilhar insights com o time de Produto',
+            2: 'Uso intensivo de IA no ciclo completo de desenvolvimento (Full Cycle com IA e SDD), acelerando entregas com qualidade',
+            3: 'Participação em migrações de tecnologia e atualização de bibliotecas para versões modernas',
+            4: 'Participação em plantões e guardias noturnas, atuando na investigação e resolução de incidentes em produção'
+          },
         },
         v4: {
           role: 'Desenvolvedor Frontend Pleno',
@@ -173,6 +180,13 @@ export const translations = {
             0: 'Working in Mercado Pago’s fintech area, developing systems with React, Node.js, TypeScript and SSR, with a focus on performance and quality',
             1: 'Leading cross-team initiatives, from analysis to deployment, in partnership with Product and UX',
             2: 'Ownership of key initiatives, participation in deployments, and use of AI, AI-SDD and automated testing throughout the development cycle'
+          },
+          achievements: {
+            0: 'Development and maintenance of financial applications used daily by millions of people',
+            1: 'Ownership of multiple initiatives, tracking business and performance metrics and sharing insights with the Product team',
+            2: 'Heavy use of AI across the full development lifecycle (AI Full Cycle and SDD), accelerating delivery with high quality',
+            3: 'Contribution to technology migrations and library upgrades to modern versions',
+            4: 'Participation in on-call rotations and night shifts, acting on production incident investigation and resolution'
           },
         },
         v4: {
