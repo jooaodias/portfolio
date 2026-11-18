@@ -137,7 +137,7 @@ export default function HomePageClient() {
               <div className="pb-3.5 flex items-center justify-between gap-3">
                 <div className="flex items-center gap-2.5 text-zinc-400 min-w-0">
                   <Calendar className="w-4 h-4 text-[#38bdf8] shrink-0" aria-hidden="true" />
-                  <span className="text-xs sm:text-sm whitespace-nowrap">{t('stats.yearsExperience')}</span>
+                  <span className="text-xs sm:text-sm">{t('stats.yearsExperience')}</span>
                 </div>
                 <span className="text-xl sm:text-2xl font-bold text-white tabular-nums shrink-0">
                   {yearsOfExperience}+
@@ -147,7 +147,7 @@ export default function HomePageClient() {
               <div className="py-3.5 flex items-center justify-between gap-3">
                 <div className="flex items-center gap-2.5 text-zinc-400 min-w-0">
                   <Users className="w-4 h-4 text-[#FFE600] shrink-0" aria-hidden="true" />
-                  <span className="text-xs sm:text-sm whitespace-nowrap">{t('home.bento.dailyUsersLabel')}</span>
+                  <span className="text-xs sm:text-sm">{t('home.bento.dailyUsersLabel')}</span>
                 </div>
                 <span className="text-lg sm:text-xl font-bold text-white shrink-0">
                   {t('home.bento.dailyUsersValue')}
@@ -157,7 +157,7 @@ export default function HomePageClient() {
               <div className="pt-3.5 flex items-center justify-between gap-3">
                 <div className="flex items-center gap-2.5 text-zinc-400 min-w-0">
                   <Briefcase className="w-4 h-4 text-[#38bdf8] shrink-0" aria-hidden="true" />
-                  <span className="text-xs sm:text-sm whitespace-nowrap">{t('stats.companies')}</span>
+                  <span className="text-xs sm:text-sm">{t('stats.companies')}</span>
                 </div>
                 <span className="text-xl sm:text-2xl font-bold text-white tabular-nums shrink-0">
                   {companiesCount}
