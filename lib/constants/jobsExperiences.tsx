@@ -48,6 +48,6 @@ export const getExperiences = (t: (key: string) => string): JobExperience[] => [
       t('jobs.experiences.venturus.description.2'),
     ],
     technologies: ["React.js", "Next.js", "Redux", "React Query", "TypeScript"],
-    icon: "https://media.licdn.com/dms/image/v2/D4D0BAQEIThwZwzZCEA/company-logo_200_200/B4DZaDCK6qHwAM-/0/1745955106878/venturus_logo?e=2147483647&v=beta&t=HBSf1iSh-bcIM0x42yX0auQu2Cd5b4KRJIvdIABsKs"
+    icon: "/icons/venturus.jpg"
   }
 ];
