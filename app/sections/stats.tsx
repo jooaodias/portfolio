@@ -4,15 +4,17 @@ import React from "react";
 import AnimatedContent from "@/lib/components/animated-content/animated-content";
 import { Calendar, Code, Briefcase, FolderKanban } from "lucide-react";
 import { useI18n } from "@/lib/i18n/context";
+import { getExperiences } from "@/lib/constants/jobsExperiences";
 
 const StatsComponent = () => {
     const { t } = useI18n();
     const currentYear = new Date().getFullYear();
     const yearsOfExperience = currentYear - 2021; // Started in Feb 2021
+    const companiesCount = React.useMemo(() => getExperiences(t).length, [t]);
     
     const stats = [
         { icon: Calendar, value: `${yearsOfExperience}+`, labelKey: 'stats.yearsExperience' },
-        { icon: Briefcase, value: '2', labelKey: 'stats.companies' },
+        { icon: Briefcase, value: String(companiesCount), labelKey: 'stats.companies' },
         { icon: FolderKanban, value: '13+', labelKey: 'stats.projects' },
         { icon: Code, value: '14+', labelKey: 'stats.technologies' },
     ];

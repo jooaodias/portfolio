@@ -1,7 +1,25 @@
-import { Code, Zap } from "lucide-react";
 import { JobExperience } from "../types/jobs";
 
 export const getExperiences = (t: (key: string) => string): JobExperience[] => [
+  {
+    company: "Mercado Livre · Mercado Pago",
+    role: t('jobs.experiences.mercadolivre.role'),
+    period: t('jobs.experiences.mercadolivre.period'),
+    description: [
+      t('jobs.experiences.mercadolivre.description.0'),
+      t('jobs.experiences.mercadolivre.description.1'),
+      t('jobs.experiences.mercadolivre.description.2'),
+    ],
+    technologies: ["React.js", "Node.js", "TypeScript", "SSR", "Jest", "React Testing Library", "Grafana", "Datadog"],
+    achievements: [
+      t('jobs.experiences.mercadolivre.achievements.0'),
+      t('jobs.experiences.mercadolivre.achievements.1'),
+      t('jobs.experiences.mercadolivre.achievements.2'),
+      t('jobs.experiences.mercadolivre.achievements.3'),
+      t('jobs.experiences.mercadolivre.achievements.4'),
+    ],
+    icon: "/icons/mercado-livre.png"
+  },
   {
     company: "V4 Company",
     role: t('jobs.experiences.v4.role'),
@@ -18,7 +36,7 @@ export const getExperiences = (t: (key: string) => string): JobExperience[] => [
       t('jobs.experiences.v4.achievements.1'),
       t('jobs.experiences.v4.achievements.2'),
     ],
-    icon: "https://i.imgur.com/pujrYSq.png"
+    icon: "/icons/v4-company.png"
   },
   {
     company: "Venturus",
@@ -30,6 +48,6 @@ export const getExperiences = (t: (key: string) => string): JobExperience[] => [
       t('jobs.experiences.venturus.description.2'),
     ],
     technologies: ["React.js", "Next.js", "Redux", "React Query", "TypeScript"],
-    icon: "https://media.licdn.com/dms/image/v2/D4D0BAQEIThwZwzZCEA/company-logo_200_200/B4DZaDCK6qHwAM-/0/1745955106878/venturus_logo?e=2147483647&v=beta&t=HBSf1iSh-bcIM0x42yX0auQu2Cd5b4KRJIvdvIABsKs"
+    icon: "https://media.licdn.com/dms/image/v2/D4D0BAQEIThwZwzZCEA/company-logo_200_200/B4DZaDCK6qHwAM-/0/1745955106878/venturus_logo?e=2147483647&v=beta&t=HBSf1iSh-bcIM0x42yX0auQu2Cd5b4KRJIvdIABsKs"
   }
 ];

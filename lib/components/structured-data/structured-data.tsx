@@ -33,7 +33,7 @@ export default function StructuredData() {
         jobTitle: 'Full Stack Developer',
         worksFor: {
           '@type': 'Organization',
-          name: 'V4 Company',
+          name: 'Mercado Livre',
         },
         knowsAbout: [
           'React.js',

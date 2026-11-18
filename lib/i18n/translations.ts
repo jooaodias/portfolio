@@ -38,9 +38,25 @@ export const translations = {
       achievements: 'Principais Conquistas',
       current: 'Atual',
       experiences: {
+        mercadolivre: {
+          role: 'Software Engineer Front End',
+          period: 'Mai 2026 - Atual',
+          description: {
+            0: 'Atuação na área de fintech do Mercado Pago no desenvolvimento de sistemas com React, Node.js, TypeScript e SSR, com foco em performance e qualidade',
+            1: 'Condução de demandas cross-team, da análise à implantação, em parceria com Produto e UX',
+            2: 'Ownership de temas, participação em deploys e uso de IA, AI-SDD e testes automatizados no ciclo de desenvolvimento'
+          },
+          achievements: {
+            0: 'Atuação no desenvolvimento de aplicações financeiras utilizadas no dia a dia por milhões de pessoas',
+            1: 'Ownership de múltiplos temas, acompanhando métricas de negócio e performance para compartilhar insights com o time de Produto',
+            2: 'Uso intensivo de IA no ciclo completo de desenvolvimento (Full Cycle com IA e SDD), acelerando entregas com qualidade',
+            3: 'Participação em migrações de tecnologia e atualização de bibliotecas para versões modernas',
+            4: 'Participação em plantões e guardias noturnas, atuando na investigação e resolução de incidentes em produção'
+          },
+        },
         v4: {
           role: 'Desenvolvedor Frontend Pleno',
-          period: 'Mar 2025 - Atual',
+          period: 'Mar 2025 - Abr 2026',
           description: {
             0: 'Desenvolvimento e manutenção de aplicações web full stack de alta disponibilidade, utilizadas por mais de 4 mil usuários ativos, com foco em arquitetura frontend e APIs backend em Node.js',
             1: 'Criação de APIs RESTful com Node.js e Fastify, integração com bancos de dados PostgreSQL, e implementação de arquiteturas de microserviços',
@@ -157,9 +173,25 @@ export const translations = {
       achievements: 'Main Achievements',
       current: 'Current',
       experiences: {
+        mercadolivre: {
+          role: 'Front End Software Engineer',
+          period: 'May 2026 - Current',
+          description: {
+            0: 'Working in Mercado Pago’s fintech area, developing systems with React, Node.js, TypeScript and SSR, with a focus on performance and quality',
+            1: 'Leading cross-team initiatives, from analysis to deployment, in partnership with Product and UX',
+            2: 'Ownership of key initiatives, participation in deployments, and use of AI, AI-SDD and automated testing throughout the development cycle'
+          },
+          achievements: {
+            0: 'Development and maintenance of financial applications used daily by millions of people',
+            1: 'Ownership of multiple initiatives, tracking business and performance metrics and sharing insights with the Product team',
+            2: 'Heavy use of AI across the full development lifecycle (AI Full Cycle and SDD), accelerating delivery with high quality',
+            3: 'Contribution to technology migrations and library upgrades to modern versions',
+            4: 'Participation in on-call rotations and night shifts, acting on production incident investigation and resolution'
+          },
+        },
         v4: {
           role: 'Mid-level Frontend Developer',
-          period: 'Mar 2025 - Current',
+          period: 'Mar 2025 - Apr 2026',
           description: {
             0: 'Development and maintenance of high-availability full stack web applications, used by more than 4,000 active users, focusing on frontend architecture and Node.js backend APIs',
             1: 'Creation of RESTful APIs with Node.js and Fastify, PostgreSQL database integration, and implementation of microservices architectures',
@@ -240,4 +272,3 @@ export const translations = {
     }
   },
 } as const
-
