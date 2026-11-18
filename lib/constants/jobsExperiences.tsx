@@ -11,7 +11,7 @@ export const getExperiences = (t: (key: string) => string): JobExperience[] => [
       t('jobs.experiences.mercadolivre.description.2'),
     ],
     technologies: ["React.js", "Node.js", "TypeScript", "SSR", "Jest", "React Testing Library", "Grafana", "Datadog"],
-    icon: "/icons/mercado-livre.svg"
+    icon: "/icons/mercado-livre.png"
   },
   {
     company: "V4 Company",
