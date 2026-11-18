@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { PostList } from '@/lib/components/blog'
 import { getPosts } from '@/lib/services/blog'
-import AnimatedContent from '@/lib/components/animated-content/animated-content'
 import { Footer } from '@/lib/components/footer/footer'
 import { BookOpen } from 'lucide-react'
 import { BlogHeader } from './blog-header'
@@ -36,20 +35,24 @@ export default async function BlogPage() {
   return (
     <BlogFeatureGate>
       <div className="flex flex-col min-h-screen">
-        <article className="grow w-full max-w-6xl mx-auto px-6 py-12">
-          <AnimatedContent delay={0} duration={0.6}>
-            <div className="text-center mb-12">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <BookOpen className="w-8 h-8 text-purple-400" />
-                <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+        <article className="grow w-full max-w-5xl mx-auto px-4 sm:px-6 pt-4 pb-12">
+          <header className="bg-[#111216] border border-white/10 rounded-2xl p-6 sm:p-8 mb-8">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-3">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center">
+                  <BookOpen className="w-5 h-5 text-[#38bdf8]" aria-hidden="true" />
+                </div>
+                <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
                   Blog
                 </h1>
               </div>
-              <BlogHeader />
+              <span className="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs font-medium text-zinc-300 tabular-nums">
+                {posts.length} {posts.length === 1 ? 'post' : 'posts'}
+              </span>
             </div>
-          </AnimatedContent>
+            <BlogHeader />
+          </header>
 
-          {/* Content */}
           <PostList posts={posts} />
         </article>
 

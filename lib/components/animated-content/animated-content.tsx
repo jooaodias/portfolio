@@ -19,11 +19,11 @@ interface AnimatedContentProps {
 
 const AnimatedContent: React.FC<AnimatedContentProps> = ({
   children,
-  distance = 100,
+  distance = 28,
   direction = 'vertical',
   reverse = false,
-  duration = 0.8,
-  ease = 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+  duration = 0.5,
+  ease = 'cubic-bezier(0.16, 1, 0.3, 1)',
   initialOpacity = 0,
   animateOpacity = true,
   scale = 1,
@@ -39,6 +39,14 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
     const el = ref.current;
     if (!el || hasAnimated.current) return;
 
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      hasAnimated.current = true;
+      return;
+    }
+
+    let delayTimer: ReturnType<typeof setTimeout> | undefined;
+    let completeTimer: ReturnType<typeof setTimeout> | undefined;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -46,18 +54,17 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
             hasAnimated.current = true;
             observer.disconnect();
 
-            if (delay > 0) {
-              setTimeout(() => {
-                setIsVisible(true);
-                if (onComplete) {
-                  setTimeout(onComplete, duration * 1000);
-                }
-              }, delay * 1000);
-            } else {
+            const reveal = () => {
               setIsVisible(true);
               if (onComplete) {
-                setTimeout(onComplete, duration * 1000);
+                completeTimer = setTimeout(onComplete, duration * 1000);
               }
+            };
+
+            if (delay > 0) {
+              delayTimer = setTimeout(reveal, delay * 1000);
+            } else {
+              reveal();
             }
           }
         });
@@ -72,6 +79,8 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
 
     return () => {
       observer.disconnect();
+      if (delayTimer) clearTimeout(delayTimer);
+      if (completeTimer) clearTimeout(completeTimer);
     };
   }, [threshold, delay, duration, onComplete]);
 
@@ -79,8 +88,8 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
   const offset = reverse ? -distance : distance;
 
   const baseStyles: React.CSSProperties = {
-    transform: isVisible 
-      ? 'translate3d(0, 0, 0) scale(1)' 
+    transform: isVisible
+      ? 'translate3d(0, 0, 0) scale(1)'
       : `translate${axis}(${offset}px) scale(${scale})`,
     opacity: isVisible ? 1 : (animateOpacity ? initialOpacity : 1),
     transition: `transform ${duration}s ${ease}, opacity ${duration}s ${ease}`,
@@ -88,7 +97,11 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
   };
 
   return (
-    <div ref={ref} style={baseStyles}>
+    <div
+      ref={ref}
+      style={baseStyles}
+      className="motion-reduce:!transform-none motion-reduce:!opacity-100 motion-reduce:!transition-none"
+    >
       {children}
     </div>
   );

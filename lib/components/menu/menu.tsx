@@ -134,28 +134,28 @@ export function NavigationMenu() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative flex items-center gap-2 transition-all duration-300 cursor-pointer z-10",
-                  "rounded-lg px-3 py-2 hover:bg-gray-800/60",
-                  isActive && "bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-purple-500/30"
+                  "relative flex items-center gap-2 transition-all duration-200 cursor-pointer z-10",
+                  "rounded-lg px-3 py-2 hover:bg-white/[0.06]",
+                  isActive && "bg-[#38bdf8]/12 border border-[#38bdf8]/40"
                 )}
               >
                 <Icon 
                   className={cn(
-                    "w-4 h-4 transition-colors duration-300",
-                    isActive ? "text-purple-400" : "text-white"
+                    "w-4 h-4 transition-colors duration-200",
+                    isActive ? "text-[#38bdf8]" : "text-white"
                   )} 
                   strokeWidth={2} 
                 />
                 {!isMobile && (
                   <span className={cn(
-                    "text-sm font-medium whitespace-nowrap transition-colors duration-300",
-                    isActive ? "text-purple-300" : "text-white"
+                    "text-sm font-medium whitespace-nowrap transition-colors duration-200",
+                    isActive ? "text-[#38bdf8]" : "text-white"
                   )}>
                     {t(item.labelKey)}
                   </span>
                 )}
                 {isActive && (
-                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-purple-500 rounded-full animate-pulse" />
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-[#38bdf8] rounded-full" />
                 )}
               </Link>
             )
@@ -171,30 +171,30 @@ export function NavigationMenu() {
               href={href}
               onClick={(e) => !isOnBlogPage && handleClick(e, item.href)}
               className={cn(
-                "relative flex items-center gap-2 transition-all duration-300 cursor-pointer z-10",
+                "relative flex items-center gap-2 transition-all duration-200 cursor-pointer z-10",
                 isCircular
-                  ? "rounded-full p-2.5 hover:bg-gray-800/60"
-                  : "rounded-lg px-3 py-2 hover:bg-gray-800/60",
-                isActive && !isCircular && "bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-purple-500/30"
+                  ? "rounded-full p-2.5 hover:bg-white/[0.06]"
+                  : "rounded-lg px-3 py-2 hover:bg-white/[0.06]",
+                isActive && !isCircular && "bg-[#38bdf8]/12 border border-[#38bdf8]/40"
               )}
             >
               <Icon 
                 className={cn(
-                  "w-4 h-4 transition-colors duration-300",
-                  isActive ? "text-purple-400" : "text-white"
+                  "w-4 h-4 transition-colors duration-200",
+                  isActive ? "text-[#38bdf8]" : "text-white"
                 )} 
                 strokeWidth={2} 
               />
               {!isCircular && !isMobile && (
                 <span className={cn(
-                  "text-sm font-medium whitespace-nowrap transition-colors duration-300",
-                  isActive ? "text-purple-300" : "text-white"
+                  "text-sm font-medium whitespace-nowrap transition-colors duration-200",
+                  isActive ? "text-[#38bdf8]" : "text-white"
                 )}>
                   {item.labelKey === "Skills" ? item.labelKey : t(item.labelKey)}
                 </span>
               )}
               {isActive && (
-                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-purple-500 rounded-full animate-pulse" />
+                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-[#38bdf8] rounded-full" />
               )}
             </a>
           )

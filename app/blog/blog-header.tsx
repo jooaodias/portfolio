@@ -3,13 +3,11 @@
 import { useI18n } from '@/lib/i18n/context'
 
 export function BlogHeader() {
-  const { locale } = useI18n()
+  const { t } = useI18n()
 
   return (
-    <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-      {locale === 'en-US'
-        ? 'Articles about development, projects, and my journey as a developer'
-        : 'Artigos sobre desenvolvimento, projetos e minha jornada como desenvolvedor'}
+    <p className="text-zinc-300 text-sm sm:text-base max-w-2xl leading-relaxed">
+      {t('blog.description')}
     </p>
   )
 }

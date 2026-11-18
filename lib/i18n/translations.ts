@@ -14,7 +14,18 @@ export const translations = {
     // Home page
     home: {
       from: 'do',
-      name: 'João Vitor',
+      name: 'João Vitor Aleixo',
+      roleBadge: 'Front End Software Engineer · Fintech @ Mercado Pago',
+      summary: 'Construo aplicações financeiras usadas no dia a dia por milhões de pessoas com React, Node.js, TypeScript e SSR — aplicando IA em todo o ciclo de desenvolvimento (Full Cycle & SDD).',
+      bento: {
+        currentStatus: 'Atualmente @ Mercado Pago',
+        impactTitle: 'Escala & Trajetória',
+        dailyUsersValue: 'Milhões',
+        dailyUsersLabel: 'Usuários',
+        stackTitle: 'Stack Principal & Workflow',
+        connectTitle: 'Conexões Diretas',
+        basedIn: 'Brasil',
+      },
       typing: {
         text1: 'Meu nome é João Vitor',
         text2: 'Sou desenvolvedor Full Stack',
@@ -149,7 +160,18 @@ export const translations = {
     // Home page
     home: {
       from: 'from',
-      name: 'João Vitor',
+      name: 'João Vitor Aleixo',
+      roleBadge: 'Front End Software Engineer · Fintech @ Mercado Pago',
+      summary: 'Building financial applications used daily by millions of people with React, Node.js, TypeScript, and SSR — leveraging AI across the full development lifecycle (Full Cycle & SDD).',
+      bento: {
+        currentStatus: 'Currently @ Mercado Pago',
+        impactTitle: 'Scale & Track Record',
+        dailyUsersValue: 'Millions',
+        dailyUsersLabel: 'Users',
+        stackTitle: 'Core Stack & Workflow',
+        connectTitle: 'Direct Links',
+        basedIn: 'Brazil',
+      },
       typing: {
         text1: 'My name is João Vitor',
         text2: "I'm a Full Stack Developer",

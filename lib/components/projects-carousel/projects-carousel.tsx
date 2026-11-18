@@ -126,7 +126,7 @@ export function ProjectsCarousel({ projects, ariaLabel }: ProjectsCarouselProps)
           ref={viewportRef}
           onScroll={onScroll}
           onKeyDown={onViewportKeyDown}
-          className="flex w-full overflow-x-auto scroll-smooth snap-x snap-mandatory outline-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden focus-visible:ring-2 focus-visible:ring-purple-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950"
+          className="flex w-full overflow-x-auto scroll-smooth snap-x snap-mandatory outline-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden focus-visible:ring-2 focus-visible:ring-[#38bdf8]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0b0e]"
           tabIndex={0}
         >
           {projects.map((project) => (
@@ -145,7 +145,7 @@ export function ProjectsCarousel({ projects, ariaLabel }: ProjectsCarouselProps)
             onClick={goPrev}
             disabled={atStart}
             aria-label="Previous project"
-            className="pointer-events-auto ml-0 sm:-ml-2 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gray-700/80 bg-gray-900/90 text-gray-200 shadow-lg backdrop-blur-sm transition-colors hover:border-purple-500/50 hover:text-white disabled:pointer-events-none disabled:opacity-35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950"
+            className="pointer-events-auto ml-0 sm:-ml-2 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-[#111216]/90 text-zinc-200 shadow-lg transition-colors hover:border-[#38bdf8]/50 hover:text-white disabled:pointer-events-none disabled:opacity-35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#38bdf8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0b0e]"
           >
             <ChevronLeft className="h-5 w-5" aria-hidden />
           </button>
@@ -154,7 +154,7 @@ export function ProjectsCarousel({ projects, ariaLabel }: ProjectsCarouselProps)
             onClick={goNext}
             disabled={atEnd}
             aria-label="Next project"
-            className="pointer-events-auto mr-0 sm:-mr-2 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gray-700/80 bg-gray-900/90 text-gray-200 shadow-lg backdrop-blur-sm transition-colors hover:border-purple-500/50 hover:text-white disabled:pointer-events-none disabled:opacity-35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950"
+            className="pointer-events-auto mr-0 sm:-mr-2 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-[#111216]/90 text-zinc-200 shadow-lg transition-colors hover:border-[#38bdf8]/50 hover:text-white disabled:pointer-events-none disabled:opacity-35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#38bdf8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0b0e]"
           >
             <ChevronRight className="h-5 w-5" aria-hidden />
           </button>
@@ -172,10 +172,10 @@ export function ProjectsCarousel({ projects, ariaLabel }: ProjectsCarouselProps)
             onClick={() => scrollToIndex(index)}
             aria-label={`Go to project ${index + 1}: ${project.title}`}
             aria-current={activeIndex === index ? 'true' : undefined}
-            className={`h-2.5 w-2.5 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 ${
+            className={`h-2.5 w-2.5 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#38bdf8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0b0e] ${
               activeIndex === index
-                ? 'scale-110 bg-gradient-to-r from-blue-400 to-purple-400'
-                : 'bg-gray-600 hover:bg-gray-500'
+                ? 'scale-110 bg-[#38bdf8]'
+                : 'bg-zinc-600 hover:bg-zinc-500'
             }`}
           />
         ))}
