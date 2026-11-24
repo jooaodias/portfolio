@@ -10,9 +10,9 @@ export function BackLink() {
   return (
     <Link
       href="/blog"
-      className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#111216] border border-white/10 text-sm font-medium text-zinc-300 hover:text-white hover:border-[#38bdf8]/50 transition-colors mb-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#38bdf8]"
+      className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-elevated border border-border-subtle text-sm font-medium text-ink-secondary hover:text-ink hover:border-border-hover transition-colors mb-6"
     >
-      <ArrowLeft className="w-4 h-4 text-[#38bdf8]" aria-hidden="true" />
+      <ArrowLeft className="w-4 h-4 text-accent" aria-hidden="true" />
       {t('blog.backToBlog')}
     </Link>
   )

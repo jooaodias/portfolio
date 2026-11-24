@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Inter_Tight } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "@/lib/theme/globals.css";
 import { MainContent } from "./main";
 import { I18nProvider } from "@/lib/i18n/context";
@@ -22,8 +22,8 @@ const inter = Inter({
   display: "swap",
 });
 
-const interTight = Inter_Tight({
-  variable: "--font-inter-tight",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
   display: "swap",
 });
@@ -104,13 +104,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="pt-BR" className="dark" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');var d=t?t==='dark':true;document.documentElement.classList.toggle('dark',d);document.documentElement.style.colorScheme=d?'dark':'light';}catch(e){}})();`,
+          }}
+        />
         <StructuredData />
       </head>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA4_ANALYTICS!} />
       <body
-        className={`${inter.variable} ${interTight.variable} antialiased`}
+        className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >
         <Providers>
           <MainContent>

@@ -16,7 +16,7 @@ export function ShareButton() {
     <button
       type="button"
       onClick={handleShare}
-      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/[0.04] border border-white/10 text-xs font-medium text-[#38bdf8] hover:border-[#38bdf8]/50 transition-colors ml-auto cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#38bdf8]"
+      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-accent-soft border border-accent/25 text-xs font-medium text-accent-text hover:opacity-90 transition-opacity ml-auto cursor-pointer"
     >
       <Share2 className="w-3.5 h-3.5" aria-hidden="true" />
       {t('blog.share')}

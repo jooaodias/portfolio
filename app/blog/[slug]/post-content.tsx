@@ -39,23 +39,23 @@ export function PostContent({
   return (
     <>
       {/* Title */}
-      <h1 className="text-2xl sm:text-4xl font-bold tracking-tight text-white mb-5 leading-tight">
+      <h1 className="text-2xl sm:text-4xl font-bold tracking-tight text-ink mb-5 leading-tight">
         {displayTitle}
       </h1>
 
       {/* Meta */}
-      <div className="flex flex-wrap items-center gap-4 text-zinc-400 text-sm pb-6 mb-8 border-b border-white/10">
+      <div className="flex flex-wrap items-center gap-4 text-ink-muted text-sm pb-6 mb-8 border-b border-border-subtle">
         <span className="flex items-center gap-2">
-          <User className="w-4 h-4 text-[#38bdf8]" aria-hidden="true" />
+          <User className="w-4 h-4 text-accent" aria-hidden="true" />
           {authorName}
         </span>
         <span className="flex items-center gap-2">
-          <Calendar className="w-4 h-4 text-zinc-500" aria-hidden="true" />
+          <Calendar className="w-4 h-4 text-ink-muted" aria-hidden="true" />
           {formattedDate}
         </span>
         {readingTime && (
           <span className="flex items-center gap-2">
-            <Clock className="w-4 h-4 text-zinc-500" aria-hidden="true" />
+            <Clock className="w-4 h-4 text-ink-muted" aria-hidden="true" />
             {readingTime} min {locale === 'en-US' ? 'read' : 'de leitura'}
           </span>
         )}
@@ -65,18 +65,18 @@ export function PostContent({
       {/* Content */}
       <AnimatedContent delay={0.15} duration={0.45}>
         <div
-          className="prose prose-invert prose-lg max-w-none
-            prose-headings:text-white prose-headings:font-bold
+          className="prose prose-slate dark:prose-invert prose-lg max-w-none
+            prose-headings:text-ink prose-headings:font-bold
             prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
             prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
-            prose-p:text-zinc-300 prose-p:leading-relaxed prose-p:mb-4
-            prose-a:text-[#38bdf8] prose-a:no-underline hover:prose-a:underline
-            prose-strong:text-white prose-strong:font-semibold
-            prose-code:text-[#38bdf8] prose-code:bg-white/[0.06] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
-            prose-pre:bg-[#0a0b0e] prose-pre:border prose-pre:border-white/10
-            prose-blockquote:border-l-[#38bdf8] prose-blockquote:bg-white/[0.03] prose-blockquote:py-2 prose-blockquote:px-4
-            prose-ul:text-zinc-300 prose-ol:text-zinc-300
-            prose-li:marker:text-[#38bdf8]"
+            prose-p:text-ink-secondary prose-p:leading-relaxed prose-p:mb-4
+            prose-a:text-accent prose-a:no-underline hover:prose-a:underline
+            prose-strong:text-ink prose-strong:font-semibold
+            prose-code:text-accent-text prose-code:bg-accent-soft prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
+            prose-pre:bg-elevated prose-pre:border prose-pre:border-border-subtle
+            prose-blockquote:border-l-accent prose-blockquote:bg-surface prose-blockquote:py-2 prose-blockquote:px-4
+            prose-ul:text-ink-secondary prose-ol:text-ink-secondary
+            prose-li:marker:text-accent"
         >
           <ReactMarkdown remarkPlugins={[remarkGfm]}>
             {displayContent}

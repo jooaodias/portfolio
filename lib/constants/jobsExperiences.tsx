@@ -18,7 +18,8 @@ export const getExperiences = (t: (key: string) => string): JobExperience[] => [
       t('jobs.experiences.mercadolivre.achievements.3'),
       t('jobs.experiences.mercadolivre.achievements.4'),
     ],
-    icon: "/icons/mercado-livre.png"
+    icon: "/icons/mercado-livre.png",
+    secondaryIcon: "/icons/mercado-pago.png"
   },
   {
     company: "V4 Company",
