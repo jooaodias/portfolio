@@ -162,24 +162,26 @@ const TextType = ({
   const shouldHideCursor =
     hideCursorWhileTyping && (currentCharIndex < textArray[currentTextIndex].length || isDeleting);
 
-  return createElement(
-    Component,
-    {
-      ref: containerRef,
-      className: `inline-block whitespace-pre-wrap tracking-tight break-words ${className}`,
-      ...props
-    },
-    <span className="inline" style={{ color: getCurrentTextColor() || 'inherit' }}>
-      {displayedText}
-    </span>,
-    showCursor && (
-      <span
-        className={`ml-1 inline-block ${shouldHideCursor ? 'hidden' : ''} ${cursorClassName}`}
-        style={cursorStyle}
-      >
-        {cursorCharacter}
+  const Tag = Component as React.ElementType;
+
+  return (
+    <Tag
+      ref={containerRef}
+      className={`inline-block whitespace-pre-wrap tracking-tight break-words ${className}`}
+      {...props}
+    >
+      <span className="inline" style={{ color: getCurrentTextColor() || 'inherit' }}>
+        {displayedText}
       </span>
-    )
+      {showCursor && (
+        <span
+          className={`ml-1 inline-block ${shouldHideCursor ? 'hidden' : ''} ${cursorClassName}`}
+          style={cursorStyle}
+        >
+          {cursorCharacter}
+        </span>
+      )}
+    </Tag>
   );
 };
 

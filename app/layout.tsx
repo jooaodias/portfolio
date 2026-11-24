@@ -4,6 +4,7 @@ import "@/lib/theme/globals.css";
 import { MainContent } from "./main";
 import { I18nProvider } from "@/lib/i18n/context";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { Analytics } from "@vercel/analytics/next";
 import StructuredData from "@/lib/components/structured-data/structured-data";
 import { Providers } from "./providers/providers";
 import { ToastProviderLazy } from "@/lib/components/toast-provider/toast-provider-lazy";
@@ -117,6 +118,7 @@ export default function RootLayout({
           </MainContent>
           <ToastProviderLazy />
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
