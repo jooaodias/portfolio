@@ -85,7 +85,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <BackLink />
           </AnimatedContent>
 
-          <div className="bg-[#111216] border border-white/10 rounded-2xl p-6 sm:p-10">
+          <div className="bg-elevated/50 border border-border-subtle rounded-2xl p-6 sm:p-10">
             <AnimatedContent delay={0.05} duration={0.45}>
               <header className="mb-8">
                 {post.tags.length > 0 && (
@@ -93,7 +93,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     {post.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 text-xs font-medium bg-white/[0.04] border border-white/10 text-zinc-300 rounded-full"
+                        className="px-3 py-1 text-xs font-medium bg-accent-soft text-accent-text rounded-full"
                       >
                         {tag}
                       </span>

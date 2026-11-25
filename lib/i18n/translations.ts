@@ -15,10 +15,10 @@ export const translations = {
     home: {
       from: 'do',
       name: 'João Vitor Aleixo',
-      roleBadge: 'Front End Software Engineer · Fintech @ Mercado Pago',
-      summary: 'Construo aplicações financeiras usadas no dia a dia por milhões de pessoas com React, Node.js, TypeScript e SSR — aplicando IA em todo o ciclo de desenvolvimento (Full Cycle & SDD).',
+      roleBadge: 'Front End Software Engineer · Fintech',
+      summary: 'Desenvolvo aplicações financeiras usadas diariamente por milhões de pessoas com React, Node.js, TypeScript e SSR, usando IA no dia a dia para acelerar protótipos, entregas e análises de produto.',
       bento: {
-        currentStatus: 'Atualmente @ Mercado Pago',
+        currentStatus: 'Atualmente @ Mercado Pago · Brasil',
         impactTitle: 'Escala & Trajetória',
         dailyUsersValue: 'Milhões',
         dailyUsersLabel: 'Usuários',
@@ -39,9 +39,9 @@ export const translations = {
     },
     // About me
     aboutMe: {
-      text1: 'Sou um Desenvolvedor Full Stack com forte experiência em frontend, atuando desde 2021 na criação de aplicações web modernas e escaláveis. Trabalho com React.js, Next.js e TypeScript no frontend, e Node.js, Fastify e PostgreSQL no backend, sempre focado em arquiteturas robustas e performáticas.',
-      text2: 'Contribuo ativamente como suporte ao Chapter, participando de code reviews, ajudando na definição de padrões técnicos e atuando como Buddy no onboarding de novos desenvolvedores frontend. Acredito na importância da colaboração e compartilhamento de conhecimento em times de alta performance.',
-      text3: 'Sou movido pela vontade de aprender continuamente, crescer como desenvolvedor full stack, e entregar soluções que gerem impacto real para usuários e negócios.',
+      text1: 'Trabalho com desenvolvimento web desde 2021, com base principal em frontend usando React, Next.js e TypeScript, além de experiência em backend com Node.js, Fastify e PostgreSQL.',
+      text2: 'Atualmente faço parte do time de fintech do Mercado Pago, onde atuo na construção de produtos financeiros em escala, cuidando de demandas de ponta a ponta com Produto e UX, do desenho técnico ao monitoramento em produção.',
+      text3: 'Ao longo da carreira também apoiei o Chapter de frontend em code reviews, padronização de arquitetura e acompanhamento de novos integrantes como Buddy.',
     },
     // Jobs
     jobs: {
@@ -53,16 +53,16 @@ export const translations = {
           role: 'Software Engineer Front End',
           period: 'Mai 2026 - Atual',
           description: {
-            0: 'Atuação na área de fintech do Mercado Pago no desenvolvimento de sistemas com React, Node.js, TypeScript e SSR, com foco em performance e qualidade',
+            0: 'Atuação em produtos de fintech com React, Node.js, TypeScript e SSR, conduzindo demandas entre times com Produto e UX e acompanhando métricas de negócio e performance.',
             1: 'Condução de demandas cross-team, da análise à implantação, em parceria com Produto e UX',
-            2: 'Ownership de temas, participação em deploys e uso de IA, AI-SDD e testes automatizados no ciclo de desenvolvimento'
+            2: 'Ownership de temas, participação em deploys e testes automatizados no ciclo de entrega'
           },
           achievements: {
-            0: 'Atuação no desenvolvimento de aplicações financeiras utilizadas no dia a dia por milhões de pessoas',
-            1: 'Ownership de múltiplos temas, acompanhando métricas de negócio e performance para compartilhar insights com o time de Produto',
-            2: 'Uso intensivo de IA no ciclo completo de desenvolvimento (Full Cycle com IA e SDD), acelerando entregas com qualidade',
+            0: 'Evolução de fluxos financeiros acessados diariamente por milhões de usuários',
+            1: 'Uso de IA no desenvolvimento de tarefas, protótipos rápidos, análise de métricas com Produto e acompanhamento de rollout/deploy',
+            2: 'Atualizações de arquitetura, testes automatizados e plantões de produção',
             3: 'Participação em migrações de tecnologia e atualização de bibliotecas para versões modernas',
-            4: 'Participação em plantões e guardias noturnas, atuando na investigação e resolução de incidentes em produção'
+            4: 'Investigação e resolução de incidentes em produção'
           },
         },
         v4: {
@@ -161,10 +161,10 @@ export const translations = {
     home: {
       from: 'from',
       name: 'João Vitor Aleixo',
-      roleBadge: 'Front End Software Engineer · Fintech @ Mercado Pago',
-      summary: 'Building financial applications used daily by millions of people with React, Node.js, TypeScript, and SSR — leveraging AI across the full development lifecycle (Full Cycle & SDD).',
+      roleBadge: 'Front End Software Engineer · Fintech',
+      summary: 'I build financial applications used daily by millions of people with React, Node.js, TypeScript, and SSR, using AI day-to-day to speed up prototypes, delivery, and product metrics analysis.',
       bento: {
-        currentStatus: 'Currently @ Mercado Pago',
+        currentStatus: 'Currently @ Mercado Pago · Brazil',
         impactTitle: 'Scale & Track Record',
         dailyUsersValue: 'Millions',
         dailyUsersLabel: 'Users',
@@ -185,9 +185,9 @@ export const translations = {
     },
     // About me
     aboutMe: {
-      text1: 'I am a Full Stack Developer with strong frontend expertise, working since 2021 on creating modern and scalable web applications. I work with React.js, Next.js and TypeScript on the frontend, and Node.js, Fastify and PostgreSQL on the backend, always focused on robust and performant architectures.',
-      text2: 'I actively contribute as support to the Chapter, participating in code reviews, helping to define technical standards and acting as Buddy in onboarding new frontend developers. I believe in the importance of collaboration and knowledge sharing in high-performance teams.',
-      text3: 'I am driven by the desire to learn continuously, grow as a full stack developer, and deliver solutions that generate real impact for users and businesses.',
+      text1: 'I have been building web applications since 2021, with a primary focus on frontend using React, Next.js, and TypeScript, alongside backend work with Node.js, Fastify, and PostgreSQL.',
+      text2: 'I currently work on Mercado Pago’s fintech team building financial products at scale, partnering with Product and UX from technical design through rollout and production monitoring.',
+      text3: 'Along the way I have also supported the frontend Chapter through code reviews, architecture standards, and mentoring new engineers as an onboarding Buddy.',
     },
     // Jobs
     jobs: {
@@ -199,16 +199,16 @@ export const translations = {
           role: 'Front End Software Engineer',
           period: 'May 2026 - Current',
           description: {
-            0: 'Working in Mercado Pago’s fintech area, developing systems with React, Node.js, TypeScript and SSR, with a focus on performance and quality',
+            0: 'Working on fintech products with React, Node.js, TypeScript, and SSR, leading cross-team initiatives with Product and UX while tracking business and performance metrics.',
             1: 'Leading cross-team initiatives, from analysis to deployment, in partnership with Product and UX',
-            2: 'Ownership of key initiatives, participation in deployments, and use of AI, AI-SDD and automated testing throughout the development cycle'
+            2: 'Ownership of key initiatives, rollout monitoring, and automated testing'
           },
           achievements: {
-            0: 'Development and maintenance of financial applications used daily by millions of people',
-            1: 'Ownership of multiple initiatives, tracking business and performance metrics and sharing insights with the Product team',
-            2: 'Heavy use of AI across the full development lifecycle (AI Full Cycle and SDD), accelerating delivery with high quality',
+            0: 'Evolution of financial flows accessed daily by millions of users',
+            1: 'Daily use of AI for task implementation, rapid prototypes, metrics analysis shared with Product, and rollout/deploy tracking',
+            2: 'Architecture upgrades, automated tests, and production on-call support',
             3: 'Contribution to technology migrations and library upgrades to modern versions',
-            4: 'Participation in on-call rotations and night shifts, acting on production incident investigation and resolution'
+            4: 'Production incident investigation and resolution'
           },
         },
         v4: {

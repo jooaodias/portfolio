@@ -43,7 +43,7 @@ export function PostList({ posts, showEmpty = true }: PostListProps) {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="relative w-full sm:max-w-xs">
             <Search
-              className="w-4 h-4 text-zinc-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"
+              className="w-4 h-4 text-ink-muted absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"
               aria-hidden="true"
             />
             <input
@@ -52,7 +52,7 @@ export function PostList({ posts, showEmpty = true }: PostListProps) {
               onChange={(e) => setSearch(e.target.value)}
               placeholder={t('blog.searchPlaceholder')}
               aria-label={t('blog.searchPlaceholder')}
-              className="w-full pl-10 pr-4 py-2 rounded-xl bg-[#111216] border border-white/10 text-sm text-white placeholder:text-zinc-500 focus:outline-none focus:border-[#38bdf8]/60 transition-colors"
+              className="w-full pl-10 pr-4 py-2 rounded-xl bg-elevated border border-border-subtle text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:border-accent transition-colors"
             />
           </div>
 
@@ -63,8 +63,8 @@ export function PostList({ posts, showEmpty = true }: PostListProps) {
                 onClick={() => setSelectedTag(null)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors cursor-pointer ${
                   selectedTag === null
-                    ? 'bg-[#38bdf8]/15 border-[#38bdf8]/50 text-[#38bdf8]'
-                    : 'bg-[#111216] border-white/10 text-zinc-400 hover:text-zinc-200'
+                    ? 'bg-accent-soft border-accent/40 text-accent-text'
+                    : 'bg-elevated border-border-subtle text-ink-muted hover:text-ink'
                 }`}
               >
                 {t('blog.allTags')}
@@ -76,8 +76,8 @@ export function PostList({ posts, showEmpty = true }: PostListProps) {
                   onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
                   className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors cursor-pointer ${
                     selectedTag === tag
-                      ? 'bg-[#38bdf8]/15 border-[#38bdf8]/50 text-[#38bdf8]'
-                      : 'bg-[#111216] border-white/10 text-zinc-400 hover:text-zinc-200'
+                      ? 'bg-accent-soft border-accent/40 text-accent-text'
+                      : 'bg-elevated border-border-subtle text-ink-muted hover:text-ink'
                   }`}
                 >
                   {tag}

@@ -11,11 +11,18 @@ import BrazilFlag from "@/public/icons/BRA.svg"
 import USAFlag from "@/public/icons/USA.svg"
 import { useIsMobile } from "@/lib/hooks/useIsMobile"
 import { useFeatureFlag } from "@/lib/hooks/useFeatureFlag"
+import { ThemeToggle } from "@/lib/components/theme-toggle/theme-toggle"
+import { useShortcutLabel } from "@/lib/components/command-palette/command-palette"
 
 const SCROLL_OFFSET = 100
 
-export function NavigationMenu() {
+export function NavigationMenu({
+  onOpenCommandPalette,
+}: {
+  onOpenCommandPalette?: () => void
+}) {
   const { locale, setLocale, t } = useI18n()
+  const { label: shortcutLabel, isTouchOnly } = useShortcutLabel()
   const [activeItem, setActiveItem] = React.useState("#home")
   const [isScrolling, setIsScrolling] = React.useState(false)
   const [isMounted, setIsMounted] = React.useState(false)
@@ -107,10 +114,10 @@ export function NavigationMenu() {
   }, [])
 
   return (
-    <div className="flex justify-center w-full py-6 px-4 fixed top-0 left-0 right-0 z-50">
+    <div className="flex justify-center w-full py-5 px-4 fixed top-0 left-0 right-0 z-50">
       <nav className={cn(
-        "relative flex items-center gap-1.5 bg-gray-900/90 backdrop-blur-md rounded-full border border-gray-800/60 shadow-xl",
-        isMobile ? "px-1.5 py-1" : "px-2 py-1.5"
+        "relative flex items-center gap-1.5 bg-elevated/90 backdrop-blur-md rounded-full border border-border-subtle shadow-lg",
+        isMobile ? "px-1.5 py-1" : "px-2.5 py-1.5"
       )}>
         {menuItems
           .filter(item => {
@@ -135,27 +142,27 @@ export function NavigationMenu() {
                 href={item.href}
                 className={cn(
                   "relative flex items-center gap-2 transition-all duration-200 cursor-pointer z-10",
-                  "rounded-lg px-3 py-2 hover:bg-white/[0.06]",
-                  isActive && "bg-[#38bdf8]/12 border border-[#38bdf8]/40"
+                  "rounded-lg px-3 py-2 hover:bg-accent-soft",
+                  isActive && "bg-accent-soft border border-accent/30"
                 )}
               >
                 <Icon 
                   className={cn(
                     "w-4 h-4 transition-colors duration-200",
-                    isActive ? "text-[#38bdf8]" : "text-white"
+                    isActive ? "text-accent" : "text-ink"
                   )} 
                   strokeWidth={2} 
                 />
                 {!isMobile && (
                   <span className={cn(
                     "text-sm font-medium whitespace-nowrap transition-colors duration-200",
-                    isActive ? "text-[#38bdf8]" : "text-white"
+                    isActive ? "text-accent-text" : "text-ink"
                   )}>
                     {t(item.labelKey)}
                   </span>
                 )}
                 {isActive && (
-                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-[#38bdf8] rounded-full" />
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-accent rounded-full" />
                 )}
               </Link>
             )
@@ -173,36 +180,47 @@ export function NavigationMenu() {
               className={cn(
                 "relative flex items-center gap-2 transition-all duration-200 cursor-pointer z-10",
                 isCircular
-                  ? "rounded-full p-2.5 hover:bg-white/[0.06]"
-                  : "rounded-lg px-3 py-2 hover:bg-white/[0.06]",
-                isActive && !isCircular && "bg-[#38bdf8]/12 border border-[#38bdf8]/40"
+                  ? "rounded-full p-2.5 hover:bg-accent-soft"
+                  : "rounded-lg px-3 py-2 hover:bg-accent-soft",
+                isActive && !isCircular && "bg-accent-soft border border-accent/30"
               )}
             >
               <Icon 
                 className={cn(
                   "w-4 h-4 transition-colors duration-200",
-                  isActive ? "text-[#38bdf8]" : "text-white"
+                  isActive ? "text-accent" : "text-ink"
                 )} 
                 strokeWidth={2} 
               />
               {!isCircular && !isMobile && (
                 <span className={cn(
                   "text-sm font-medium whitespace-nowrap transition-colors duration-200",
-                  isActive ? "text-[#38bdf8]" : "text-white"
+                  isActive ? "text-accent-text" : "text-ink"
                 )}>
                   {item.labelKey === "Skills" ? item.labelKey : t(item.labelKey)}
                 </span>
               )}
               {isActive && (
-                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-[#38bdf8] rounded-full" />
+                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-accent rounded-full" />
               )}
             </a>
           )
         })}
-        <div className="w-px h-6 bg-gray-700/50 mx-1" />
+        <div className="w-px h-6 bg-border-subtle mx-1" />
+        {onOpenCommandPalette && !isTouchOnly && !isMobile && (
+          <button
+            type="button"
+            onClick={onOpenCommandPalette}
+            className="font-mono text-[11px] px-2 py-1 rounded-md border border-border-subtle text-ink-muted hover:text-ink hover:border-border-hover transition-colors cursor-pointer"
+            title={locale === 'en-US' ? 'Quick navigation' : 'Navegação rápida'}
+          >
+            {shortcutLabel}
+          </button>
+        )}
+        <ThemeToggle className="rounded-full border-0 bg-transparent" />
         <button
           onClick={toggleLocale}
-          className="rounded-full p-2.5 hover:bg-gray-800/60 transition-all duration-200 cursor-pointer relative overflow-hidden hover:scale-110"
+          className="rounded-full p-2 hover:bg-accent-soft transition-all duration-200 cursor-pointer relative overflow-hidden"
           aria-label={locale === 'pt-BR' ? 'Switch to English' : 'Mudar para Português'}
           title={locale === 'pt-BR' ? 'Switch to English' : 'Mudar para Português'}
         >

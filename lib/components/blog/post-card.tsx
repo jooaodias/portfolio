@@ -27,12 +27,12 @@ export function PostCard({ post, index = 0 }: PostCardProps) {
     <AnimatedContent delay={Math.min(index * 0.08, 0.32)} duration={0.45} distance={20}>
       <Link
         href={`/blog/${post.slug}`}
-        className="group block h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#38bdf8]"
+        className="group block h-full rounded-xl"
       >
-        <article className="relative h-full flex flex-col bg-[#111216] border border-white/10 rounded-2xl overflow-hidden transition-colors duration-200 hover:border-[#38bdf8]/45">
+        <article className="relative h-full flex flex-col bg-elevated/60 hover:bg-surface border border-border-subtle hover:border-border-hover rounded-xl overflow-hidden transition-colors duration-200">
           {/* Cover Image */}
           {post.coverImage ? (
-            <div className="relative h-44 w-full overflow-hidden bg-zinc-900 border-b border-white/10">
+            <div className="relative h-44 w-full overflow-hidden bg-canvas border-b border-border-subtle">
               <img
                 src={post.coverImage}
                 alt={title}
@@ -40,8 +40,8 @@ export function PostCard({ post, index = 0 }: PostCardProps) {
               />
             </div>
           ) : (
-            <div className="h-44 w-full bg-white/[0.02] border-b border-white/10 flex items-center justify-center">
-              <span className="text-4xl font-bold text-white/15 select-none">
+            <div className="h-44 w-full bg-canvas/70 border-b border-border-subtle flex items-center justify-center">
+              <span className="text-4xl font-bold text-ink-muted/25 select-none">
                 {title.charAt(0)}
               </span>
             </div>
@@ -55,7 +55,7 @@ export function PostCard({ post, index = 0 }: PostCardProps) {
                   {post.tags.slice(0, 3).map((tag) => (
                     <span
                       key={tag}
-                      className="px-2.5 py-0.5 text-xs font-medium bg-white/[0.04] border border-white/10 text-zinc-300 rounded-full"
+                      className="px-2.5 py-0.5 text-xs font-medium bg-accent-soft text-accent-text rounded-full"
                     >
                       {tag}
                     </span>
@@ -63,19 +63,19 @@ export function PostCard({ post, index = 0 }: PostCardProps) {
                 </div>
               )}
 
-              <h3 className="text-lg font-bold text-white mb-2 line-clamp-2 group-hover:text-[#38bdf8] transition-colors">
+              <h3 className="text-lg font-bold text-ink mb-2 line-clamp-2 group-hover:text-accent transition-colors">
                 {title}
               </h3>
 
-              <p className="text-zinc-400 text-sm line-clamp-3 leading-relaxed">
+              <p className="text-ink-muted text-sm line-clamp-3 leading-relaxed">
                 {excerpt}
               </p>
             </div>
 
-            <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs text-zinc-400">
+            <div className="pt-3 border-t border-border-subtle flex items-center justify-between text-xs text-ink-muted">
               <div className="flex items-center gap-3">
                 <span className="flex items-center gap-1.5">
-                  <Calendar className="w-3.5 h-3.5 text-zinc-500" aria-hidden="true" />
+                  <Calendar className="w-3.5 h-3.5 text-ink-muted" aria-hidden="true" />
                   {formattedDate}
                 </span>
                 {post.readingTime && (

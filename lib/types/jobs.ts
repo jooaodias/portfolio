@@ -6,4 +6,5 @@ export interface JobExperience {
     technologies: string[];
     achievements?: string[];
     icon?: string;
+    secondaryIcon?: string;
   }
